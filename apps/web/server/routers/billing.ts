@@ -17,7 +17,7 @@ async function getStripe() {
 }
 
 // ------------------------------------------------------------------
-// Plan definitions — must match products/prices created in Stripe
+// Plan definitions —must match products/prices created in Stripe
 // ------------------------------------------------------------------
 export const PLAN_PRICE_IDS: Record<string, string> = {
     pro: process.env.STRIPE_PRO_PRICE_ID || "price_pro_placeholder",
