@@ -22,7 +22,8 @@ export const Platform = {
   mpesa: 'mpesa',
   africastalking: 'africastalking',
   whatsapp: 'whatsapp',
-  kraETR: 'kraETR'
+  kraETR: 'kraETR',
+  resend: 'resend'
 } as const
 
 export type Platform = (typeof Platform)[keyof typeof Platform]

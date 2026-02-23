@@ -82,3 +82,8 @@ export type NodeRun = Prisma.NodeRunModel
  * 
  */
 export type UsageRecord = Prisma.UsageRecordModel
+/**
+ * Model MpesaPayment
+ * 
+ */
+export type MpesaPayment = Prisma.MpesaPaymentModel

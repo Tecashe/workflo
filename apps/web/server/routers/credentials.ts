@@ -64,6 +64,7 @@ const create = protectedProcedure
             "africastalking",
             "whatsapp",
             "kraETR",
+            "resend",
         ]),
         keys: z.record(z.string(), z.any()),
     }))

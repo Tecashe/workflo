@@ -191,6 +191,7 @@ enum Platform {
   africastalking
   whatsapp
   kraETR
+  resend
 }
 
 model UsageRecord {

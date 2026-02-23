@@ -396,7 +396,8 @@ export const ModelName = {
   Credentials: 'Credentials',
   WorkflowRun: 'WorkflowRun',
   NodeRun: 'NodeRun',
-  UsageRecord: 'UsageRecord'
+  UsageRecord: 'UsageRecord',
+  MpesaPayment: 'MpesaPayment'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -412,7 +413,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "workflow" | "trigger" | "availableTrigger" | "action" | "availableAction" | "credentials" | "workflowRun" | "nodeRun" | "usageRecord"
+    modelProps: "user" | "session" | "account" | "verification" | "workflow" | "trigger" | "availableTrigger" | "action" | "availableAction" | "credentials" | "workflowRun" | "nodeRun" | "usageRecord" | "mpesaPayment"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1378,6 +1379,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    MpesaPayment: {
+      payload: Prisma.$MpesaPaymentPayload<ExtArgs>
+      fields: Prisma.MpesaPaymentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MpesaPaymentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MpesaPaymentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>
+        }
+        findFirst: {
+          args: Prisma.MpesaPaymentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MpesaPaymentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>
+        }
+        findMany: {
+          args: Prisma.MpesaPaymentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>[]
+        }
+        create: {
+          args: Prisma.MpesaPaymentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>
+        }
+        createMany: {
+          args: Prisma.MpesaPaymentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MpesaPaymentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>[]
+        }
+        delete: {
+          args: Prisma.MpesaPaymentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>
+        }
+        update: {
+          args: Prisma.MpesaPaymentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>
+        }
+        deleteMany: {
+          args: Prisma.MpesaPaymentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MpesaPaymentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MpesaPaymentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>[]
+        }
+        upsert: {
+          args: Prisma.MpesaPaymentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MpesaPaymentPayload>
+        }
+        aggregate: {
+          args: Prisma.MpesaPaymentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMpesaPayment>
+        }
+        groupBy: {
+          args: Prisma.MpesaPaymentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MpesaPaymentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MpesaPaymentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MpesaPaymentCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1588,6 +1663,26 @@ export const UsageRecordScalarFieldEnum = {
 } as const
 
 export type UsageRecordScalarFieldEnum = (typeof UsageRecordScalarFieldEnum)[keyof typeof UsageRecordScalarFieldEnum]
+
+
+export const MpesaPaymentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  merchantRequestId: 'merchantRequestId',
+  checkoutRequestId: 'checkoutRequestId',
+  status: 'status',
+  resultCode: 'resultCode',
+  resultDesc: 'resultDesc',
+  amount: 'amount',
+  receiptNumber: 'receiptNumber',
+  phoneNumber: 'phoneNumber',
+  transactionDate: 'transactionDate',
+  rawPayload: 'rawPayload',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MpesaPaymentScalarFieldEnum = (typeof MpesaPaymentScalarFieldEnum)[keyof typeof MpesaPaymentScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1854,6 +1949,7 @@ export type GlobalOmitConfig = {
   workflowRun?: Prisma.WorkflowRunOmit
   nodeRun?: Prisma.NodeRunOmit
   usageRecord?: Prisma.UsageRecordOmit
+  mpesaPayment?: Prisma.MpesaPaymentOmit
 }
 
 /* Types for Logging */

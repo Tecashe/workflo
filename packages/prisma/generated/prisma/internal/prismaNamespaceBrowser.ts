@@ -63,7 +63,8 @@ export const ModelName = {
   Credentials: 'Credentials',
   WorkflowRun: 'WorkflowRun',
   NodeRun: 'NodeRun',
-  UsageRecord: 'UsageRecord'
+  UsageRecord: 'UsageRecord',
+  MpesaPayment: 'MpesaPayment'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -253,6 +254,26 @@ export const UsageRecordScalarFieldEnum = {
 } as const
 
 export type UsageRecordScalarFieldEnum = (typeof UsageRecordScalarFieldEnum)[keyof typeof UsageRecordScalarFieldEnum]
+
+
+export const MpesaPaymentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  merchantRequestId: 'merchantRequestId',
+  checkoutRequestId: 'checkoutRequestId',
+  status: 'status',
+  resultCode: 'resultCode',
+  resultDesc: 'resultDesc',
+  amount: 'amount',
+  receiptNumber: 'receiptNumber',
+  phoneNumber: 'phoneNumber',
+  transactionDate: 'transactionDate',
+  rawPayload: 'rawPayload',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MpesaPaymentScalarFieldEnum = (typeof MpesaPaymentScalarFieldEnum)[keyof typeof MpesaPaymentScalarFieldEnum]
 
 
 export const SortOrder = {
