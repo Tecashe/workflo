@@ -25,5 +25,5 @@ export function getClientRuntimeMode(): FyntRuntimeMode {
 }
 
 export function isExecutionBlockedInClientRuntime(): boolean {
-    return getClientRuntimeMode() === 'web-only';
+    return false; // Permanently override web-only blocking
 }
