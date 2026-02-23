@@ -135,8 +135,13 @@ function InteractiveGraph() {
     };
 
     return (
-        <div ref={ref} className="relative w-full h-full flex items-center justify-center z-10 scale-75 sm:scale-100">
-            <svg className="absolute inset-0 w-full h-full" style={{ overflow: 'visible' }}>
+        <div ref={ref} className="relative w-full h-full flex items-center justify-center z-10">
+            <svg
+                className="w-full h-full drop-shadow-2xl"
+                viewBox="0 0 600 400"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
                 <defs>
                     <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#404040" />
@@ -146,8 +151,9 @@ function InteractiveGraph() {
                 </defs>
 
                 {/* Connection lines */}
+                {/* Node A (100,200) to Node B (300,100) */}
                 <motion.path
-                    d="M 100 200 C 150 200, 200 120, 250 120"
+                    d="M 100 200 C 200 200, 200 100, 300 100"
                     fill="transparent"
                     stroke="url(#line-gradient)"
                     strokeWidth="2"
@@ -156,17 +162,10 @@ function InteractiveGraph() {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                 />
+
+                {/* Node A (100,200) to Node C (300,300) */}
                 <motion.path
-                    d="M 100 200 C 150 200, 200 280, 250 280"
-                    fill="transparent"
-                    stroke="#404040"
-                    strokeWidth="2"
-                    variants={pathVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                />
-                <motion.path
-                    d="M 250 120 C 300 120, 350 200, 400 200"
+                    d="M 100 200 C 200 200, 200 300, 300 300"
                     fill="transparent"
                     stroke="#404040"
                     strokeWidth="2"
@@ -175,7 +174,18 @@ function InteractiveGraph() {
                     animate={isInView ? "visible" : "hidden"}
                 />
 
-                {/* Moving dot along main path */}
+                {/* Node B (300,100) to Node D (500,200) */}
+                <motion.path
+                    d="M 300 100 C 400 100, 400 200, 500 200"
+                    fill="transparent"
+                    stroke="#404040"
+                    strokeWidth="2"
+                    variants={pathVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                />
+
+                {/* Moving dot along main success path */}
                 {isInView && (
                     <motion.circle
                         r="3"
@@ -189,28 +199,29 @@ function InteractiveGraph() {
                             ease: "linear"
                         }}
                         style={{
-                            offsetPath: "path('M 100 200 C 150 200, 200 120, 250 120 M 250 120 C 300 120, 350 200, 400 200')"
+                            offsetPath: "path('M 100 200 C 200 200, 200 100, 300 100 M 300 100 C 400 100, 400 200, 500 200')"
                         }}
                     >
                         <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
                     </motion.circle>
                 )}
-            </svg>
 
-            {/* Simulated Nodes */}
-            <div className="absolute flex gap-24 items-center">
-                <Node label="Webhook" delay={0.2} active={isInView} type="trigger" />
-                <div className="flex flex-col gap-24">
-                    <Node label="Format Data" delay={0.8} active={isInView} type="action" status="success" />
-                    <Node label="Filter" delay={1.0} active={isInView} type="logic" status="idle" />
-                </div>
-                <Node label="HTTP Request" delay={1.4} active={isInView} type="action" status="idle" />
-            </div>
+                {/* Simulated Nodes via foreignObject perfectly centered on the coordinates */}
+                <SvgNode cx={100} cy={200} label="Webhook" delay={0.2} active={isInView} type="trigger" />
+                <SvgNode cx={300} cy={100} label="Format Data" delay={0.8} active={isInView} type="action" status="success" />
+                <SvgNode cx={300} cy={300} label="Filter" delay={1.0} active={isInView} type="logic" status="idle" />
+                <SvgNode cx={500} cy={200} label="HTTP Request" delay={1.4} active={isInView} type="action" status="idle" />
+
+            </svg>
         </div>
     );
 }
 
-function Node({ label, delay, active, type, status = 'idle' }: { label: string, delay: number, active: boolean, type: string, status?: 'idle' | 'success' | 'error' }) {
+function SvgNode({ cx, cy, label, delay, active, type, status = 'idle' }: { cx: number, cy: number, label: string, delay: number, active: boolean, type: string, status?: 'idle' | 'success' | 'error' }) {
+    const size = 56; // 14 * 4 = 56px (w-14)
+    const x = cx - size / 2;
+    const y = cy - size / 2;
+
     const getStyles = () => {
         if (status === 'success') return 'border-[#F04D26]/50 bg-[#F04D26]/10 shadow-[0_0_15px_rgba(240,77,38,0.2)]';
         if (status === 'error') return 'border-red-500/50 bg-red-500/10';
@@ -218,31 +229,34 @@ function Node({ label, delay, active, type, status = 'idle' }: { label: string, 
     };
 
     return (
-        <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={active ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.3, delay: active ? delay : 0, type: "spring" }}
-            className={`w-14 h-14 rounded-xl border flex items-center justify-center relative ${getStyles()}`}
-        >
-            {/* Pulsing ring for success state */}
-            {status === 'success' && active && (
-                <motion.div
-                    initial={{ scale: 1, opacity: 0.5 }}
-                    animate={{ scale: 1.5, opacity: 0 }}
-                    transition={{ duration: 1.5, repeat: Infinity, delay: delay + 0.5 }}
-                    className="absolute inset-0 rounded-xl border border-[#F04D26]"
-                />
-            )}
+        <foreignObject x={x} y={y} width={size + 60} height={size + 40} className="overflow-visible">
+            <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={active ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.3, delay: active ? delay : 0, type: "spring" }}
+                style={{ width: size, height: size }}
+                className={`rounded-xl border flex items-center justify-center relative ${getStyles()}`}
+            >
+                {/* Pulsing ring for success state */}
+                {status === 'success' && active && (
+                    <motion.div
+                        initial={{ scale: 1, opacity: 0.5 }}
+                        animate={{ scale: 1.5, opacity: 0 }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: delay + 0.5 }}
+                        className="absolute inset-0 rounded-xl border border-[#F04D26]"
+                    />
+                )}
 
-            <span className="text-[10px] absolute -bottom-6 text-white/50 whitespace-nowrap font-medium tracking-wide uppercase">
-                {label}
-            </span>
+                <span className="text-[10px] absolute -bottom-6 text-white/50 whitespace-nowrap font-medium tracking-wide uppercase">
+                    {label}
+                </span>
 
-            <div className="w-6 h-6 rounded bg-white/5 flex items-center justify-center">
-                {type === 'trigger' && <div className="w-2 h-2 rounded-full bg-blue-400" />}
-                {type === 'action' && <div className="w-3 h-3 bg-green-400/80 rounded-[3px]" />}
-                {type === 'logic' && <div className="w-3 h-3 border-2 border-purple-400/80 rounded-sm rotate-45" />}
-            </div>
-        </motion.div>
+                <div className="w-6 h-6 rounded bg-white/5 flex items-center justify-center">
+                    {type === 'trigger' && <div className="w-2 h-2 rounded-full bg-blue-400" />}
+                    {type === 'action' && <div className="w-3 h-3 bg-green-400/80 rounded-[3px]" />}
+                    {type === 'logic' && <div className="w-3 h-3 border-2 border-purple-400/80 rounded-sm rotate-45" />}
+                </div>
+            </motion.div>
+        </foreignObject>
     );
 }

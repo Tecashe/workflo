@@ -11,6 +11,7 @@ import { FooterCTASectionSeparator } from "@/components/landing-page/footer-cta/
 import { Footer } from "@/components/landing-page/footer-cta/Footer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArchitectureSection } from "@/components/landing-page/architecture/ArchitectureSection";
+import { ObservabilitySection } from "@/components/landing-page/observability/ObservabilitySection";
 import { IntegrationsMarquee } from "@/components/landing-page/integrations/IntegrationsMarquee";
 import { StatsSection } from "@/components/landing-page/stats/StatsSection";
 import { FinalCTA } from "@/components/landing-page/cta/FinalCTA";
@@ -32,6 +33,7 @@ export default function Home() {
           <DesktopPlayground />
 
           <ArchitectureSection />
+          <ObservabilitySection />
           <IntegrationsMarquee />
           <TemplatesSection />
           <StatsSection />
