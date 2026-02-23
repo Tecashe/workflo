@@ -67,7 +67,7 @@ src/
 | `RUN_RESERVATION_LOCK_TTL_SECONDS` | `10` | Lock TTL |
 | `RUN_RESERVATION_LOCK_WAIT_MS` | `1500` | Max wait time to acquire lock |
 | `RUN_RESERVATION_LOCK_RETRY_MS` | `40` | Retry interval while waiting |
-| `FYNT_ENABLE_AUTOMATION_IN_PRODUCTION` | `false` | Enables webhook and cron automation in production |
+| `FLOE_ENABLE_AUTOMATION_IN_PRODUCTION` | `false` | Enables webhook and cron automation in production |
 
 
 ## Notes

@@ -86,13 +86,13 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number, label: string): 
         const timer = setTimeout(() => reject(new Error(label)), timeoutMs);
         promise
             .then((value) => {
-            clearTimeout(timer);
-            resolve(value);
-        })
+                clearTimeout(timer);
+                resolve(value);
+            })
             .catch((error) => {
-            clearTimeout(timer);
-            reject(error);
-        });
+                clearTimeout(timer);
+                reject(error);
+            });
     });
 }
 function toCompactErrorMessage(error: unknown): string {
@@ -118,7 +118,7 @@ async function isDatabaseHealthy(): Promise<boolean> {
     let lastError: unknown;
     for (let attempt = 1; attempt <= DB_HEALTHCHECK_RETRIES; attempt += 1) {
         try {
-            await withTimeout(prisma.$queryRaw `SELECT 1`, DB_HEALTHCHECK_TIMEOUT_MS, `Database health check timed out after ${DB_HEALTHCHECK_TIMEOUT_MS}ms`);
+            await withTimeout(prisma.$queryRaw`SELECT 1`, DB_HEALTHCHECK_TIMEOUT_MS, `Database health check timed out after ${DB_HEALTHCHECK_TIMEOUT_MS}ms`);
             return true;
         }
         catch (error) {
@@ -369,7 +369,7 @@ async function tick(): Promise<void> {
 }
 export function startCronScheduler(): void {
     if (isAutomationDisabledInProduction()) {
-        console.warn('[cron-scheduler] Disabled in production. Set FYNT_ENABLE_AUTOMATION_IN_PRODUCTION=true to enable cron.');
+        console.warn('[cron-scheduler] Disabled in production. Set FLOE_ENABLE_AUTOMATION_IN_PRODUCTION=true to enable cron.');
         return;
     }
     tick().catch((error) => {

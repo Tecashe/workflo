@@ -1,6 +1,6 @@
 export type FloeRuntimeMode = 'full' | 'web-only';
 
-const FYNT_RUNTIME_MODE_VALUES = new Set<FloeRuntimeMode>(['full', 'web-only']);
+const FLOE_RUNTIME_MODE_VALUES = new Set<FloeRuntimeMode>(['full', 'web-only']);
 
 function parseRuntimeMode(value: string | undefined): FloeRuntimeMode | null {
     if (!value) {
@@ -8,7 +8,7 @@ function parseRuntimeMode(value: string | undefined): FloeRuntimeMode | null {
     }
 
     const normalized = value.trim().toLowerCase();
-    if (FYNT_RUNTIME_MODE_VALUES.has(normalized as FloeRuntimeMode)) {
+    if (FLOE_RUNTIME_MODE_VALUES.has(normalized as FloeRuntimeMode)) {
         return normalized as FloeRuntimeMode;
     }
 
@@ -16,7 +16,7 @@ function parseRuntimeMode(value: string | undefined): FloeRuntimeMode | null {
 }
 
 export function getClientRuntimeMode(): FloeRuntimeMode {
-    const configuredRuntimeMode = parseRuntimeMode(process.env.NEXT_PUBLIC_FYNT_RUNTIME_MODE);
+    const configuredRuntimeMode = parseRuntimeMode(process.env.NEXT_PUBLIC_FLOE_RUNTIME_MODE);
     if (configuredRuntimeMode) {
         return configuredRuntimeMode;
     }

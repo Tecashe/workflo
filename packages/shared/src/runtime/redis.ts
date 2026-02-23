@@ -68,7 +68,7 @@ function parseRedisUrl(url: string): RedisOptions {
 
 export function getRedisConnectionOptions(): RedisOptions {
     if (redisDisabledForRuntime) {
-        throw new Error('[redis] Disabled in web-only runtime mode. Set FYNT_RUNTIME_MODE=full to enable Redis.');
+        throw new Error('[redis] Disabled in web-only runtime mode. Set FLOE_RUNTIME_MODE=full to enable Redis.');
     }
 
     const redisUrl = process.env.REDIS_URL?.trim() || process.env.UPSTASH_REDIS_URL?.trim();

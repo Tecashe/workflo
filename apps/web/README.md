@@ -114,7 +114,7 @@ docker compose up --build
 ```
 
 This starts `web`, `worker`, `realtime`, `postgres`, and `redis` together.
-By default, Postgres is exposed on host port `55432` to avoid `5432` collisions; override with `FYNT_POSTGRES_PORT`.
+By default, Postgres is exposed on host port `55432` to avoid `5432` collisions; override with `FLOE_POSTGRES_PORT`.
 
 Useful commands:
 
@@ -125,7 +125,7 @@ docker compose down -v
 ```
 
 Notes:
-- Docker full stack runs in `FYNT_RUNTIME_MODE=full` with automation enabled.
+- Docker full stack runs in `FLOE_RUNTIME_MODE=full` with automation enabled.
 - Web-only mode is separate and does not require worker/realtime.
 - For Docker runtime, use `.env.docker` at repo root (no `apps/web/.env` required).
 
@@ -150,8 +150,8 @@ Required for any deploy:
 | `ENCRYPTION_KEY` | Encrypt and decrypt stored credentials. Must match worker in full mode |
 | `BETTER_AUTH_SECRET` | Auth signing secret |
 | `BETTER_AUTH_URL` | Auth base URL |
-| `FYNT_RUNTIME_MODE` | Runtime behavior for server routes (`web-only` or `full`) |
-| `NEXT_PUBLIC_FYNT_RUNTIME_MODE` | Runtime behavior for execute UX in browser (`web-only` or `full`) |
+| `FLOE_RUNTIME_MODE` | Runtime behavior for server routes (`web-only` or `full`) |
+| `NEXT_PUBLIC_FLOE_RUNTIME_MODE` | Runtime behavior for execute UX in browser (`web-only` or `full`) |
 
 Used in full self-host mode:
 
@@ -174,7 +174,7 @@ Optional:
 
 ### Production automation switch
 
-Set `FYNT_RUNTIME_MODE=web-only` and `NEXT_PUBLIC_FYNT_RUNTIME_MODE=web-only` to run production web-only mode:
+Set `FLOE_RUNTIME_MODE=web-only` and `NEXT_PUBLIC_FLOE_RUNTIME_MODE=web-only` to run production web-only mode:
 
 - Workflow editor remains fully usable.
 - Execute actions in UI show the existing blocked-execution dialog.
@@ -183,9 +183,9 @@ Set `FYNT_RUNTIME_MODE=web-only` and `NEXT_PUBLIC_FYNT_RUNTIME_MODE=web-only` to
 For full production execution mode, set:
 
 ```sh
-FYNT_RUNTIME_MODE=full
-NEXT_PUBLIC_FYNT_RUNTIME_MODE=full
-FYNT_ENABLE_AUTOMATION_IN_PRODUCTION=true
+FLOE_RUNTIME_MODE=full
+NEXT_PUBLIC_FLOE_RUNTIME_MODE=full
+FLOE_ENABLE_AUTOMATION_IN_PRODUCTION=true
 ```
 
 ## Troubleshooting
@@ -198,4 +198,4 @@ Verify realtime is deployed and reachable, and verify `NEXT_PUBLIC_EXECUTION_WS_
 
 **Webhooks return 503 in production**
 For web-only mode this is expected.  
-For full mode, set `FYNT_RUNTIME_MODE=full` plus `FYNT_ENABLE_AUTOMATION_IN_PRODUCTION=true`.
+For full mode, set `FLOE_RUNTIME_MODE=full` plus `FLOE_ENABLE_AUTOMATION_IN_PRODUCTION=true`.

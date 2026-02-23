@@ -195,7 +195,7 @@ export function logRedisTroubleshooting(prefix: string, error: unknown): void {
     }
 
     if (isRuntimeModeDisabledError(error)) {
-        printTroubleshootingStep(prefix, 'FYNT_RUNTIME_MODE is web-only. Set FYNT_RUNTIME_MODE=full before starting the worker.');
+        printTroubleshootingStep(prefix, 'FLOE_RUNTIME_MODE is web-only. Set FLOE_RUNTIME_MODE=full before starting the worker.');
         return;
     }
 

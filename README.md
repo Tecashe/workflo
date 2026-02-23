@@ -67,7 +67,7 @@ docker compose up --build
 Services:
 - Web: `http://localhost:3000`
 - Realtime health: `http://localhost:3101/health`
-- Postgres: `localhost:55432` (default; configurable via `FYNT_POSTGRES_PORT`)
+- Postgres: `localhost:55432` (default; configurable via `FLOE_POSTGRES_PORT`)
 - Redis: `localhost:6379`
 
 Operational commands:
@@ -84,7 +84,7 @@ docker compose logs -f web worker realtime bootstrap
 ```
 
 Notes:
-- This Docker stack runs **full self-host mode** (`FYNT_RUNTIME_MODE=full`) with automation enabled.
+- This Docker stack runs **full self-host mode** (`FLOE_RUNTIME_MODE=full`) with automation enabled.
 - Web-only mode is still available outside Docker.
 - Docker stack reads `.env.docker`; `apps/web/.env` is not required for Docker runtime.
 
@@ -116,9 +116,9 @@ BETTER_AUTH_URL=http://localhost:3000
 BETTER_AUTH_SECRET=...
 ENCRYPTION_KEY=...
 # Runtime mode for server-side guards
-FYNT_RUNTIME_MODE=web-only   # use full for full self-host mode
+FLOE_RUNTIME_MODE=web-only   # use full for full self-host mode
 # Runtime mode for client-side execute button behavior
-NEXT_PUBLIC_FYNT_RUNTIME_MODE=web-only   # use full for full self-host mode
+NEXT_PUBLIC_FLOE_RUNTIME_MODE=web-only   # use full for full self-host mode
 ```
 
 Required for full self-host mode:
@@ -152,7 +152,7 @@ Web only mode:
 
 ```sh
 # Keep builder UX enabled and block execution APIs + execute actions
-FYNT_RUNTIME_MODE=web-only NEXT_PUBLIC_FYNT_RUNTIME_MODE=web-only pnpm --filter @fynt/web dev
+FLOE_RUNTIME_MODE=web-only NEXT_PUBLIC_FLOE_RUNTIME_MODE=web-only pnpm --filter @fynt/web dev
 ```
 
 Or set those two env vars in your deploy platform and run:
@@ -169,7 +169,7 @@ pnpm dev
 
 ### Production runtime behavior
 
-- `FYNT_RUNTIME_MODE=web-only` blocks:
+- `FLOE_RUNTIME_MODE=web-only` blocks:
   - workflow execution mutation
   - webhook ingestion route
   - execution websocket token route
@@ -179,9 +179,9 @@ pnpm dev
 If you run full self-host in production, set:
 
 ```sh
-FYNT_RUNTIME_MODE=full
-NEXT_PUBLIC_FYNT_RUNTIME_MODE=full
-FYNT_ENABLE_AUTOMATION_IN_PRODUCTION=true
+FLOE_RUNTIME_MODE=full
+NEXT_PUBLIC_FLOE_RUNTIME_MODE=full
+FLOE_ENABLE_AUTOMATION_IN_PRODUCTION=true
 ```
 
 

@@ -10,8 +10,8 @@
     "BETTER_AUTH_SECRET",
     "BETTER_AUTH_URL",
     "NGROK_URL",
-    "FYNT_RUNTIME_MODE",
-    "NEXT_PUBLIC_FYNT_RUNTIME_MODE",
+    "FLOE_RUNTIME_MODE",
+    "NEXT_PUBLIC_FLOE_RUNTIME_MODE",
     "EXECUTION_WS_URL",
     "NEXT_PUBLIC_EXECUTION_WS_URL",
     "EXECUTION_STREAM_SIGNING_SECRET",
@@ -34,8 +34,13 @@
   ],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
       "outputs": [
         ".next/**",
         "!.next/cache/**",
@@ -45,15 +50,21 @@
       ]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": [
+        "^lint"
+      ]
     },
     "check-types": {
-      "dependsOn": ["^check-types"]
+      "dependsOn": [
+        "^check-types"
+      ]
     },
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["^build"]
+      "dependsOn": [
+        "^build"
+      ]
     }
   }
 }

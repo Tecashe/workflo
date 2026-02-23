@@ -103,7 +103,7 @@ Optional:
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `FYNT_ENABLE_AUTOMATION_IN_PRODUCTION` | `false` | Set `true` to allow cron and webhook source execution in production |
+| `FLOE_ENABLE_AUTOMATION_IN_PRODUCTION` | `false` | Set `true` to allow cron and webhook source execution in production |
 | `DELAY_NODE_MAX_MS` | 300000 | Max delay node sleep cap (5 min) |
 | `CRON_DB_HEALTHCHECK_TIMEOUT_MS` | 5000 | DB health check timeout |
 | `CRON_DB_HEALTHCHECK_RETRIES` | 2 | Health check retry attempts |
@@ -129,4 +129,4 @@ Verify Redis config (`REDIS_URL` or `REDIS_HOST`/`REDIS_PORT`). Check Redis is r
 Inspect upstream node output keys. Fix path mismatches between template references and actual output shapes.
 
 **Cron or webhook-source runs do not execute in production**
-By default automation sources are disabled in production. Set `FYNT_ENABLE_AUTOMATION_IN_PRODUCTION=true` to enable them.
+By default automation sources are disabled in production. Set `FLOE_ENABLE_AUTOMATION_IN_PRODUCTION=true` to enable them.

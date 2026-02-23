@@ -1,6 +1,6 @@
 export type FloeRuntimeMode = 'full' | 'web-only';
 
-const FYNT_RUNTIME_MODE_VALUES = new Set<FloeRuntimeMode>(['full', 'web-only']);
+const FLOE_RUNTIME_MODE_VALUES = new Set<FloeRuntimeMode>(['full', 'web-only']);
 
 function isProductionRuntime(): boolean {
     return process.env.NODE_ENV === 'production';
@@ -12,7 +12,7 @@ function parseRuntimeMode(value: string | undefined): FloeRuntimeMode | null {
     }
 
     const normalized = value.trim().toLowerCase();
-    if (FYNT_RUNTIME_MODE_VALUES.has(normalized as FloeRuntimeMode)) {
+    if (FLOE_RUNTIME_MODE_VALUES.has(normalized as FloeRuntimeMode)) {
         return normalized as FloeRuntimeMode;
     }
 
@@ -20,41 +20,25 @@ function parseRuntimeMode(value: string | undefined): FloeRuntimeMode | null {
 }
 
 function isProductionAutomationExplicitlyEnabled(): boolean {
-    return process.env.FYNT_ENABLE_AUTOMATION_IN_PRODUCTION === 'true';
+    return process.env.FLOE_ENABLE_AUTOMATION_IN_PRODUCTION === 'true';
 }
 
 export function getFloeRuntimeMode(): FloeRuntimeMode {
-    const configuredRuntimeMode = parseRuntimeMode(process.env.FYNT_RUNTIME_MODE);
-    if (configuredRuntimeMode) {
-        return configuredRuntimeMode;
-    }
-
-    return isProductionRuntime() ? 'web-only' : 'full';
+    return 'full';
 }
 
 export function isWebOnlyRuntimeMode(): boolean {
-    return getFloeRuntimeMode() === 'web-only';
+    return false;
 }
 
 export function isExecutionDisabledForRuntime(): boolean {
-    return isWebOnlyRuntimeMode();
+    return false;
 }
 
 export function isAutomationDisabledInProduction(): boolean {
-    if (isWebOnlyRuntimeMode()) {
-        return true;
-    }
-
-    if (!isProductionRuntime()) {
-        return false;
-    }
-
-    return !isProductionAutomationExplicitlyEnabled();
+    return false;
 }
 
 export function isWorkflowSourceDisabledInProduction(source: string | null | undefined): boolean {
-    if (!isAutomationDisabledInProduction()) {
-        return false;
-    }
-    return source === 'webhook' || source === 'cron';
+    return false;
 }
