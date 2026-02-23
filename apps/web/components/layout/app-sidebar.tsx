@@ -55,7 +55,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         title: "Upgrade to Pro",
         url: "/home/upgrade",
         icon: UpgradeIcon,
-        inert: true,
         isActive: pathname?.startsWith("/home/upgrade"),
       },
     ],
