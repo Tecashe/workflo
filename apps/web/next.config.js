@@ -4,10 +4,8 @@ const nextConfig = {
     transpilePackages: ["@repo/prisma", "@repo/shared"],
     serverExternalPackages: ["ioredis", "bullmq"],
     typedRoutes: true,
-    experimental: {
-        turbo: {
-            root: "../..",
-        },
+    turbopack: {
+        root: "../..",
     },
 };
 export default nextConfig;
