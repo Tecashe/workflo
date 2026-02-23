@@ -1,4 +1,5 @@
 import path from 'node:path';
+import http from 'node:http';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
@@ -71,10 +72,26 @@ async function bootstrap(): Promise<void> {
     startCronScheduler();
     console.log(`[${WORKER_ID}] Worker started and ready to process workflow runs`);
 
+    // Start a simple HTTP server for health checks (e.g., for Koyeb/Render)
+    const port = process.env.PORT || 3101;
+    const server = http.createServer((req, res) => {
+        if (req.url === '/health' || req.url === '/') {
+            res.writeHead(200);
+            res.end('OK');
+        } else {
+            res.writeHead(404);
+            res.end();
+        }
+    });
+    server.listen(port, () => {
+        console.log(`[${WORKER_ID}] Health check server listening on port ${port}`);
+    });
+
     const shutdown = async (signal: NodeJS.Signals) => {
         console.log(`[${WORKER_ID}] Received ${signal}, shutting down worker...`);
         try {
             await worker.close();
+            server.close();
             console.log(`[${WORKER_ID}] Worker gracefully stopped`);
         }
         catch (error) {
