@@ -57,7 +57,6 @@ interface RuntimeWebSocket {
   on(event: string, listener: (...args: unknown[]) => void): void;
 }
 
-
 function verifyExecutionTokenWithAnySecret(token: string): ExecutionStreamTokenPayload {
   let lastError: unknown;
   for (const secret of signingSecrets) {
