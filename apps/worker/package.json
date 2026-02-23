@@ -1,7 +1,7 @@
 {
   "name": "@fynt/worker",
   "version": "1.0.0",
-  "description": "Fynt Worker - Background processor for workflow execution",
+  "description": "Floe Worker - Background processor for workflow execution",
   "type": "module",
   "main": "src/index.ts",
   "scripts": {

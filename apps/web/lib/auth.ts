@@ -56,7 +56,7 @@ export const auth = betterAuth({
                 body: JSON.stringify({
                     from: process.env.EMAIL_FROM || 'noreply@fynt.app',
                     to: user.email,
-                    subject: 'Reset your Fynt password',
+                    subject: 'Reset your Floe password',
                     html: `<p>Hi ${user.name || 'there'},</p><p>Click the link below to reset your password. This link expires in 1 hour.</p><p><a href="${url}" style="color:#F04D26">Reset Password</a></p><p>If you didn't request this, you can safely ignore this email.</p>`,
                 }),
             }).catch((err) => console.error('[auth] Resend password reset failed:', err));
@@ -77,8 +77,8 @@ export const auth = betterAuth({
                 body: JSON.stringify({
                     from: process.env.EMAIL_FROM || 'noreply@fynt.app',
                     to: user.email,
-                    subject: 'Verify your Fynt email address',
-                    html: `<p>Welcome to Fynt, ${user.name || 'there'}!</p><p>Please verify your email address to get started.</p><p><a href="${url}" style="color:#F04D26">Verify Email</a></p>`,
+                    subject: 'Verify your Floe email address',
+                    html: `<p>Welcome to Floe, ${user.name || 'there'}!</p><p>Please verify your email address to get started.</p><p><a href="${url}" style="color:#F04D26">Verify Email</a></p>`,
                 }),
             }).catch((err) => console.error('[auth] Resend verification failed:', err));
         },
@@ -109,7 +109,7 @@ export const auth = betterAuth({
                     body: JSON.stringify({
                         from: process.env.EMAIL_FROM || 'noreply@fynt.app',
                         to: newEmail,
-                        subject: 'Confirm your new Fynt email address',
+                        subject: 'Confirm your new Floe email address',
                         html: `<p>Hi ${user.name || 'there'},</p><p>Click below to confirm your new email address: <strong>${newEmail}</strong></p><p><a href="${url}" style="color:#F04D26">Confirm Email Change</a></p>`,
                     }),
                 }).catch((err) => console.error('[auth] Resend email change failed:', err));

@@ -101,7 +101,7 @@ async function stkPush(params: {
         PartyB: params.shortCode,
         PhoneNumber: phone,
         CallBackURL: params.callbackUrl,
-        AccountReference: params.accountReference || "Fynt Payment",
+        AccountReference: params.accountReference || "Floe Payment",
         TransactionDesc: params.transactionDesc || "Payment",
     };
 
@@ -348,7 +348,7 @@ export async function executeMpesaNode(
             phoneNumber,
             amount,
             commandId: resolve(data.commandId) || "BusinessPayment",
-            remarks: resolve(data.remarks) || "Payment via Fynt",
+            remarks: resolve(data.remarks) || "Payment via Floe",
             queueTimeoutUrl: queueTimeoutUrl ?? "https://example.com/mpesa/timeout",
             resultUrl: resultUrl ?? "https://example.com/mpesa/result",
             sandbox: isSandbox,

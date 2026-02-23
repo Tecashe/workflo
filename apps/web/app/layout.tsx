@@ -14,7 +14,7 @@ const normalizedSiteUrl = siteUrl.replace(/\/+$/, "");
 const socialImagePath = "/og/fynt-og.webp";
 const socialImageUrl = `${normalizedSiteUrl}${socialImagePath}`;
 
-const siteTitle = "Fynt | AI Workflow Automation Platform for Modern Teams";
+const siteTitle = "Floe | AI Workflow Automation Platform for Modern Teams";
 const siteDescription =
     "Build, run, and monitor AI-powered workflows that connect your apps, trigger actions, and keep operations moving with templates you can launch in minutes.";
 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         title: siteTitle,
         description: siteDescription,
         url: "/",
-        siteName: "Fynt",
+        siteName: "Floe",
         type: "website",
         images: [
             {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
                 width: 1204,
                 height: 600,
                 type: "image/webp",
-                alt: "Automate workflows faster with Fynt. Start free at fynt.in",
+                alt: "Automate workflows faster with Floe. Start free at fynt.in",
             },
         ],
     },

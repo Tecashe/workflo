@@ -1,11 +1,11 @@
-# Fynt
+# Floe
 
 **Open-source workflow automation platform. Build, run, and monitor multi-step automations with a visual node editor.**
 
 
-## What is Fynt?
+## What is Floe?
 
-Fynt is a self-hostable workflow automation platform. You drag nodes onto a canvas, wire them together, and let the engine execute them. Runs are distributed through a job queue, streamed live to the browser over WebSockets, and all credentials are encrypted at rest.
+Floe is a self-hostable workflow automation platform. You drag nodes onto a canvas, wire them together, and let the engine execute them. Runs are distributed through a job queue, streamed live to the browser over WebSockets, and all credentials are encrypted at rest.
 
 **What you can build:**
 - AI pipelines that chain OpenAI, Anthropic, and Gemini calls
@@ -18,7 +18,7 @@ Fynt is a self-hostable workflow automation platform. You drag nodes onto a canv
 
 Visual system design:
 
-![Fynt System Design](./apps/web/public/system-design-fynt.png)
+![Floe System Design](./apps/web/public/system-design-fynt.png)
 
 
 ## Node Types

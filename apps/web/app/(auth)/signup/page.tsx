@@ -53,8 +53,8 @@ export default function SignUpPage() {
       setIsLoading(false);
     }
   }
-  return (<AuthLayout title="Create your account" subtitle="Start building powerful workflow automations" marketingTitle="Welcome to Fynt" marketingDescription={[
-    "Join thousands of teams automating their workflows with Fynt's graph-based engine.",
+  return (<AuthLayout title="Create your account" subtitle="Start building powerful workflow automations" marketingTitle="Welcome to Floe" marketingDescription={[
+    "Join thousands of teams automating their workflows with Floe's graph-based engine.",
     "Build production-ready automations with node-level retries, checkpointing, and crash-safe execution.",
     "Connect your favorite tools including Slack, GitHub, databases, internal APIs, and leading AI models.",
   ]}>

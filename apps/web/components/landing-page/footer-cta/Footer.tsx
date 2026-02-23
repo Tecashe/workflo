@@ -327,7 +327,7 @@ export function Footer() {
 
         <div className="xl:hidden py-5 text-center">
           <p className="text-white/60 text-sm">
-            © {currentYear} Fynt. All rights reserved.
+            © {currentYear} Floe. All rights reserved.
           </p>
         </div>
 
@@ -488,7 +488,7 @@ export function Footer() {
 
         <div className="hidden xl:flex flex-col md:flex-row items-center justify-between pt-1 pb-6">
           <p className="text-white/60 text-sm mb-2 md:mb-0">
-            © {currentYear} Fynt. All rights reserved.
+            © {currentYear} Floe. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="/privacy" className="text-white/60 hover:text-white text-sm transition-colors">

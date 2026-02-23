@@ -58,7 +58,7 @@ export async function executeEmailNode(
         return { success: true, skipped: true, reason: "Email requires to, subject, and body" };
     }
 
-    const fromName = resolve(data.fromName) || "Fynt";
+    const fromName = resolve(data.fromName) || "Floe";
     const from = `${fromName} <${FROM_DEFAULT}>`;
 
     const payload: Record<string, unknown> = {

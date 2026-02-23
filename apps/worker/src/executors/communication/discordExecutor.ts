@@ -80,7 +80,7 @@ export async function executeDiscordNode(data: DiscordNodeData, _nodeRunId: stri
     }
     const parsedResult = parseTemplateWithMetadata(message, runMetadata as Record<string, string>);
     const parsedMessage = parsedResult.output;
-    const parsedUsername = parseTemplate(username || 'Fynt Bot', runMetadata as Record<string, string>);
+    const parsedUsername = parseTemplate(username || 'Floe Bot', runMetadata as Record<string, string>);
     const missingVarList = parsedResult.missingVars?.join(', ') || 'unknown variables';
     if (executionMode === 'strict_template_v1' && parsedResult.missingVars?.length) {
         throw new Error(`Message template uses undefined variables: ${missingVarList}. ` +

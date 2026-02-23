@@ -41,7 +41,7 @@ async function bootstrap(): Promise<void> {
     loadWorkerEnv();
     validateRequiredEnv();
 
-    console.log('Fynt Worker starting...');
+    console.log('Floe Worker starting...');
     console.log(`[${WORKER_ID}] PID: ${process.pid}`);
     logRedisStartupDetails();
 

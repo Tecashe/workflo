@@ -1,6 +1,6 @@
 # packages/prisma
 
-**PostgreSQL schema, Prisma client, and database migrations for Fynt.**
+**PostgreSQL schema, Prisma client, and database migrations for Floe.**
 
 
 ## What lives here

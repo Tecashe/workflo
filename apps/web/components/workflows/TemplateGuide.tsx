@@ -75,10 +75,10 @@ export function TemplateGuide({ open, onClose, templateName, description, steps,
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: i * 0.04, duration: 0.15 }}
                                 className={`rounded-lg border p-3 transition-colors ${isDone
-                                        ? "border-emerald-500/30 bg-emerald-500/5"
-                                        : isInfo
-                                            ? "border-blue-500/20 bg-blue-500/5"
-                                            : "border-[#333] bg-[#252526] hover:border-[#444]"
+                                    ? "border-emerald-500/30 bg-emerald-500/5"
+                                    : isInfo
+                                        ? "border-blue-500/20 bg-blue-500/5"
+                                        : "border-[#333] bg-[#252526] hover:border-[#444]"
                                     }`}
                             >
                                 <div className="flex items-start gap-3">
@@ -168,8 +168,8 @@ export function TemplateGuide({ open, onClose, templateName, description, steps,
                         <Button
                             onClick={() => { onConfirm(); onClose(); }}
                             className={`flex-1 text-white transition-all ${allChecked
-                                    ? "bg-[#F04D26] hover:bg-[#e04420]"
-                                    : "bg-white/10 hover:bg-white/15 cursor-default"
+                                ? "bg-[#F04D26] hover:bg-[#e04420]"
+                                : "bg-white/10 hover:bg-white/15 cursor-default"
                                 }`}
                         >
                             {allChecked ? "Use This Template →" : `Complete ${checkableSteps.length - completed.size} more steps first`}
@@ -195,7 +195,7 @@ export const TEMPLATE_GUIDES: Record<string, { description: string; steps: Guide
                 action: { label: "Open Daraja Portal", href: "https://developer.safaricom.co.ke" },
             },
             {
-                title: "Add your M-Pesa credentials in Fynt",
+                title: "Add your M-Pesa credentials in Floe",
                 description: "Go to Credentials → M-Pesa and enter your Consumer Key, Consumer Secret, Shortcode, and Passkey.",
                 action: { label: "Go to Credentials", href: "/home/credentials?platform=mpesa&openCreate=1" },
             },
@@ -210,7 +210,7 @@ export const TEMPLATE_GUIDES: Record<string, { description: string; steps: Guide
                 action: { label: "Open Meta Developers", href: "https://developers.facebook.com/docs/whatsapp" },
             },
             {
-                title: "Add WhatsApp credentials in Fynt",
+                title: "Add WhatsApp credentials in Floe",
                 description: "Go to Credentials → WhatsApp Business and enter your Access Token and Phone Number ID.",
                 action: { label: "Add WhatsApp Credentials", href: "/home/credentials?platform=whatsapp&openCreate=1" },
             },
@@ -234,7 +234,7 @@ export const TEMPLATE_GUIDES: Record<string, { description: string; steps: Guide
                 action: { label: "Pesalink ETR Hub", href: "https://pesalink.co.ke" },
             },
             {
-                title: "Add KRA ETR credentials in Fynt",
+                title: "Add KRA ETR credentials in Floe",
                 description: "Go to Credentials → KRA ETR and enter your provider's API Key, Till Number, Device Serial, and API URL.",
                 action: { label: "Add KRA ETR Credentials", href: "/home/credentials?platform=kraETR&openCreate=1" },
             },
@@ -244,7 +244,7 @@ export const TEMPLATE_GUIDES: Record<string, { description: string; steps: Guide
             },
             {
                 title: "Copy your M-Pesa Callback URL",
-                description: "Open the M-Pesa node and copy the green callback URL. Paste it into your Daraja portal so Safaricom can notify Fynt when payments are confirmed.",
+                description: "Open the M-Pesa node and copy the green callback URL. Paste it into your Daraja portal so Safaricom can notify Floe when payments are confirmed.",
             },
         ],
     },
@@ -257,7 +257,7 @@ export const TEMPLATE_GUIDES: Record<string, { description: string; steps: Guide
                 action: { label: "Sign up at Africa's Talking", href: "https://account.africastalking.com" },
             },
             {
-                title: "Add your AT credentials in Fynt",
+                title: "Add your AT credentials in Floe",
                 description: "Go to Credentials → Africa's Talking and enter your API Key and username ('sandbox' for testing, your real username for production).",
                 action: { label: "Add AT Credentials", href: "/home/credentials?platform=africastalking&openCreate=1" },
             },

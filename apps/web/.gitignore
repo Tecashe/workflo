@@ -38,6 +38,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Fynt specific
+# Floe specific
 .vscode/
 .idea/

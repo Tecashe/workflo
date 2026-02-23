@@ -33,7 +33,7 @@ function Logo() {
     <path d="M19.4718 36.8051L23.3871 18.6525H60.0481L63.6074 0.5H7.72607L0.607422 36.8051H19.4718Z" stroke="white" strokeOpacity="0.3" />
   </svg>);
 }
-function FyntSvg({ className }: {
+function FloeSvg({ className }: {
   className?: string;
 }) {
   return (<svg className={`auth-marketing-art ${className ?? ""}`.trim()} viewBox="0 0 114 88" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,7 @@ export function AuthLayout({ children, title, subtitle, marketingTitle, marketin
           </Link>
           <div className="flex items-center gap-3">
             <Logo />
-            <span className="text-white text-xl font-medium tracking-tight">Fynt</span>
+            <span className="text-white text-xl font-medium tracking-tight">Floe</span>
           </div>
         </div>
 
@@ -171,7 +171,7 @@ export function AuthLayout({ children, title, subtitle, marketingTitle, marketin
 
 
               <motion.div className="auth-marketing-art-wrap mt-6 xl:mt-8 flex justify-center" variants={prefersReducedMotion ? undefined : marketingSvgItem}>
-                <FyntSvg className="w-[210px] h-[210px] xl:w-[250px] xl:h-[250px]" />
+                <FloeSvg className="w-[210px] h-[210px] xl:w-[250px] xl:h-[250px]" />
               </motion.div>
             </motion.div>
           </div>

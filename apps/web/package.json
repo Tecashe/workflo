@@ -1,7 +1,7 @@
 {
   "name": "@fynt/web",
   "version": "0.1.0",
-  "description": "Fynt Web - Visual workflow automation editor",
+  "description": "Floe Web - Visual workflow automation editor",
   "type": "module",
   "private": true,
   "scripts": {

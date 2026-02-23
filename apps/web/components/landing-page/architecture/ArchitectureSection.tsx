@@ -51,7 +51,7 @@ export function ArchitectureSection() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="text-[#A1A1AA] text-lg max-w-2xl"
                     >
-                        Unlike step-by-step rigid automations, Fynt models workflows as directed graphs. Handle multiple outcomes, retries, and failure states with mathematical certainty.
+                        Unlike step-by-step rigid automations, Floe models workflows as directed graphs. Handle multiple outcomes, retries, and failure states with mathematical certainty.
                     </motion.p>
                 </div>
 
@@ -81,7 +81,7 @@ export function ArchitectureSection() {
                         <FeatureBlock
                             icon={<ShieldAlert />}
                             title="Crash-Safe State"
-                            description="Every node execution is checkpointed. If an external API fails structurally, Fynt pauses the run right exactly there."
+                            description="Every node execution is checkpointed. If an external API fails structurally, Floe pauses the run right exactly there."
                             delay={0.2}
                             y={y2}
                         />

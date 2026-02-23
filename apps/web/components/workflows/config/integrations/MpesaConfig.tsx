@@ -26,7 +26,7 @@ export function MpesaConfig({ data, onSave }: MpesaConfigProps) {
     );
     const [phoneNumber, setPhoneNumber] = useState(data.phoneNumber || "");
     const [amount, setAmount] = useState(data.amount || "");
-    const [accountReference, setAccountReference] = useState(data.accountReference || "Fynt Order");
+    const [accountReference, setAccountReference] = useState(data.accountReference || "Floe Order");
     const [transactionDesc, setTransactionDesc] = useState(data.transactionDesc || "Payment for services");
     const [checkoutRequestId, setCheckoutRequestId] = useState(data.checkoutRequestId || "");
     const [commandId, setCommandId] = useState(data.commandId || "BusinessPayment");
@@ -97,7 +97,7 @@ export function MpesaConfig({ data, onSave }: MpesaConfigProps) {
                         <p className="text-xs font-semibold text-emerald-300">Your M-Pesa Callback URL</p>
                     </div>
                     <p className="text-xs text-emerald-200/80 leading-relaxed">
-                        Paste this URL into the <strong>Daraja portal</strong> under your app's STK Push callback settings. Fynt handles the rest automatically.
+                        Paste this URL into the <strong>Daraja portal</strong> under your app's STK Push callback settings. Floe handles the rest automatically.
                     </p>
                     <div className="flex items-center gap-2 bg-black/30 rounded-md px-2.5 py-1.5">
                         <code className="text-xs text-emerald-300 font-mono flex-1 truncate">{callbackUrl}</code>
@@ -216,7 +216,7 @@ export function MpesaConfig({ data, onSave }: MpesaConfigProps) {
                     </div>
                     <div className="space-y-2">
                         <Label className="text-white/80">Remarks</Label>
-                        <Input value={remarks} onChange={(e) => setRemarks(e.target.value)} placeholder="Payment via Fynt" className={inputCls} />
+                        <Input value={remarks} onChange={(e) => setRemarks(e.target.value)} placeholder="Payment via Floe" className={inputCls} />
                     </div>
                 </>
             )}

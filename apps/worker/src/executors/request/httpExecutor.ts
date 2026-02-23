@@ -3,7 +3,7 @@ import { parseTemplate } from "@repo/shared/parser";
 import { SsrfBlockedError, validateOutboundUrl } from "@repo/shared/ssrf";
 import type { ExecutionMode } from "../../engine/executor.js";
 const MAX_TEXT_RESPONSE_CHARS = 100_000;
-const TEXT_TRUNCATION_SUFFIX = "\n...[response truncated by Fynt]";
+const TEXT_TRUNCATION_SUFFIX = "\n...[response truncated by Floe]";
 function isLikelyTextResponse(contentType: string | null): boolean {
     if (!contentType) {
         return true;

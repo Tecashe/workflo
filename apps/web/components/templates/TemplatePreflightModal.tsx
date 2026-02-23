@@ -240,11 +240,11 @@ export function TemplatePreflightModal({ template, open, onClose, onConfirm }: T
                 : String(currentValueRaw);
         if (fieldReq.type === 'select') {
             return (<select className="w-full px-3 py-2 rounded-md border border-white/10 bg-white/5 text-sm text-white" value={currentValue} onChange={(e) => handleFieldChange(fieldReq.nodeId, fieldReq.field, e.target.value)}>
-          {!fieldReq.defaultValue && <option value="">-- Select {fieldReq.label} --</option>}
-          {fieldReq.options?.map((opt) => (<option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>))}
-        </select>);
+                {!fieldReq.defaultValue && <option value="">-- Select {fieldReq.label} --</option>}
+                {fieldReq.options?.map((opt) => (<option key={opt.value} value={opt.value}>
+                    {opt.label}
+                </option>))}
+            </select>);
         }
         const isNotionIdField = fieldReq.field === "databaseId" ||
             fieldReq.field === "dataSourceId" ||
@@ -258,22 +258,22 @@ export function TemplatePreflightModal({ template, open, onClose, onConfirm }: T
             !notionFieldIsTemplate &&
             (!normalizedNotionId || isClearlyInvalidNotionId(normalizedNotionId));
         return (<>
-        <input type={fieldReq.type} placeholder={fieldReq.placeholder} className="w-full px-3 py-2 rounded-md border border-white/10 bg-white/5 text-sm text-white placeholder:text-white/30" value={currentValue} onChange={(e) => handleFieldChange(fieldReq.nodeId, fieldReq.field, e.target.value)}/>
-        {isInvalidNotionId && (<div className="text-xs text-amber-300 mt-1">
-            Enter a valid Notion URL or ID. Placeholder/all-zero IDs are not allowed.
-          </div>)}
-        {isNotionIdField && (<div className="text-xs text-white/40 mt-1">
-            {fieldReq.field === "pageId"
-                    ? "Tip: You can paste a full Notion page link. Fynt will extract the page ID."
-                    : "Tip: Paste a Notion database/data source link (not a regular page link). Fynt will extract the ID."}
-          </div>)}
-        {fieldReq.placeholder.includes('{') && (<div className="text-xs text-white/40 mt-1">
-            Tip: You can use template variables like {fieldReq.placeholder.match(/\{[^}]+\}/)?.[0] || "{webhook.payload.field}"}
-          </div>)}
-        {!fieldReq.required && (<div className="text-xs text-white/40 mt-1">
-            Optional — you can configure this later in the node settings.
-          </div>)}
-      </>);
+            <input type={fieldReq.type} placeholder={fieldReq.placeholder} className="w-full px-3 py-2 rounded-md border border-white/10 bg-white/5 text-sm text-white placeholder:text-white/30" value={currentValue} onChange={(e) => handleFieldChange(fieldReq.nodeId, fieldReq.field, e.target.value)} />
+            {isInvalidNotionId && (<div className="text-xs text-amber-300 mt-1">
+                Enter a valid Notion URL or ID. Placeholder/all-zero IDs are not allowed.
+            </div>)}
+            {isNotionIdField && (<div className="text-xs text-white/40 mt-1">
+                {fieldReq.field === "pageId"
+                    ? "Tip: You can paste a full Notion page link. Floe will extract the page ID."
+                    : "Tip: Paste a Notion database/data source link (not a regular page link). Floe will extract the ID."}
+            </div>)}
+            {fieldReq.placeholder.includes('{') && (<div className="text-xs text-white/40 mt-1">
+                Tip: You can use template variables like {fieldReq.placeholder.match(/\{[^}]+\}/)?.[0] || "{webhook.payload.field}"}
+            </div>)}
+            {!fieldReq.required && (<div className="text-xs text-white/40 mt-1">
+                Optional — you can configure this later in the node settings.
+            </div>)}
+        </>);
     }, [getEffectiveFieldValue, handleFieldChange]);
     const handleConfirm = async () => {
         if (!template || !canProceed)
@@ -330,106 +330,106 @@ export function TemplatePreflightModal({ template, open, onClose, onConfirm }: T
     if (!template)
         return null;
     return (<Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>Setup Template: {template.name}</DialogTitle>
-          <DialogDescription>
-            Select credentials for this template to work properly.
-          </DialogDescription>
-        </DialogHeader>
+        <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+                <DialogTitle>Setup Template: {template.name}</DialogTitle>
+                <DialogDescription>
+                    Select credentials for this template to work properly.
+                </DialogDescription>
+            </DialogHeader>
 
-        <div className="space-y-4 py-4">
-          {template.requiredBindings.map((binding, index) => {
-            const bindingKey = getTemplateBindingKey(binding, index);
-            const platformCredentials = credentials.filter(c => c.platform.toLowerCase() === binding.platform);
-            const selected = selectedBindings[bindingKey];
-            const hasMissing = missingPlatforms.includes(binding.platform);
-            const hasDuplicatePlatform = (platformBindingCounts.get(binding.platform) ?? 0) > 1;
-            const bindingHint = hasDuplicatePlatform ? (binding.nodeIds[0] ?? `binding ${index + 1}`) : null;
-            return (<div key={bindingKey} className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="font-medium text-sm capitalize text-white">
-                      {binding.platform}
-                      {bindingHint ? ` (${bindingHint})` : ""}
+            <div className="space-y-4 py-4">
+                {template.requiredBindings.map((binding, index) => {
+                    const bindingKey = getTemplateBindingKey(binding, index);
+                    const platformCredentials = credentials.filter(c => c.platform.toLowerCase() === binding.platform);
+                    const selected = selectedBindings[bindingKey];
+                    const hasMissing = missingPlatforms.includes(binding.platform);
+                    const hasDuplicatePlatform = (platformBindingCounts.get(binding.platform) ?? 0) > 1;
+                    const bindingHint = hasDuplicatePlatform ? (binding.nodeIds[0] ?? `binding ${index + 1}`) : null;
+                    return (<div key={bindingKey} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                            <div>
+                                <div className="font-medium text-sm capitalize text-white">
+                                    {binding.platform}
+                                    {bindingHint ? ` (${bindingHint})` : ""}
+                                </div>
+                                {binding.description && (<div className="text-xs text-muted-foreground">
+                                    {binding.description}
+                                </div>)}
+                                <div className="text-xs text-muted-foreground mt-1">
+                                    Required for: {binding.nodeIds.join(", ")}
+                                </div>
+                            </div>
+                            {hasMissing && (<Button size="sm" variant="outline" onClick={() => handleGoToCredentials(binding.platform)}>
+                                Set Up in Credentials
+                            </Button>)}
+                        </div>
+
+                        {platformCredentials.length > 0 ? (<select className="w-full px-3 py-2 rounded-md border border-white/10 bg-white/5 text-sm text-white" value={selected || ""} onChange={(e) => handleCredentialSelect(bindingKey, e.target.value)}>
+                            <option value="">-- Select {binding.platform} credential --</option>
+                            {platformCredentials.map((cred) => (<option key={cred.id} value={cred.id}>
+                                {cred.title}
+                            </option>))}
+                        </select>) : (<div className="px-3 py-2 rounded-md border border-amber-500/30 bg-amber-500/10 text-xs text-amber-200 flex items-center justify-between">
+                            <span>No {binding.platform} credentials found. Create one in Credentials.</span>
+                            <Button size="sm" variant="outline" className="h-7 text-[11px] bg-black text-white border-black hover:bg-neutral-900 hover:text-white" onClick={() => handleGoToCredentials(binding.platform)}>
+                                Go
+                            </Button>
+                        </div>)}
+
+
+                        {selected && template.fieldRequirements
+                            ?.filter(fieldReq => binding.nodeIds.includes(fieldReq.nodeId))
+                            .map((fieldReq) => (<div key={`${fieldReq.nodeId}-${fieldReq.field}`} className="space-y-2 mt-3 pl-3 border-l-2 border-white/10">
+                                <div>
+                                    <label className="text-xs text-white/70 mb-1 block">
+                                        {fieldReq.label} {fieldReq.required && <span className="text-red-400">*</span>}
+                                    </label>
+                                    {renderFieldControl(fieldReq)}
+                                </div>
+                            </div>))}
+                    </div>);
+                })}
+
+                {unboundFieldRequirements.length > 0 && (<div className="space-y-2">
+                    <div className="font-medium text-sm text-white">Template fields</div>
+                    <div className="text-xs text-muted-foreground">
+                        These fields are required but not tied to a credential.
                     </div>
-                    {binding.description && (<div className="text-xs text-muted-foreground">
-                        {binding.description}
-                      </div>)}
-                    <div className="text-xs text-muted-foreground mt-1">
-                      Required for: {binding.nodeIds.join(", ")}
-                    </div>
-                  </div>
-                  {hasMissing && (<Button size="sm" variant="outline" onClick={() => handleGoToCredentials(binding.platform)}>
-                      Set Up in Credentials
-                    </Button>)}
-                </div>
-
-                {platformCredentials.length > 0 ? (<select className="w-full px-3 py-2 rounded-md border border-white/10 bg-white/5 text-sm text-white" value={selected || ""} onChange={(e) => handleCredentialSelect(bindingKey, e.target.value)}>
-                    <option value="">-- Select {binding.platform} credential --</option>
-                    {platformCredentials.map((cred) => (<option key={cred.id} value={cred.id}>
-                        {cred.title}
-                      </option>))}
-                  </select>) : (<div className="px-3 py-2 rounded-md border border-amber-500/30 bg-amber-500/10 text-xs text-amber-200 flex items-center justify-between">
-                    <span>No {binding.platform} credentials found. Create one in Credentials.</span>
-                    <Button size="sm" variant="outline" className="h-7 text-[11px] bg-black text-white border-black hover:bg-neutral-900 hover:text-white" onClick={() => handleGoToCredentials(binding.platform)}>
-                      Go
-                    </Button>
-                  </div>)}
-
-                
-                {selected && template.fieldRequirements
-                    ?.filter(fieldReq => binding.nodeIds.includes(fieldReq.nodeId))
-                    .map((fieldReq) => (<div key={`${fieldReq.nodeId}-${fieldReq.field}`} className="space-y-2 mt-3 pl-3 border-l-2 border-white/10">
-                      <div>
-                        <label className="text-xs text-white/70 mb-1 block">
-                          {fieldReq.label} {fieldReq.required && <span className="text-red-400">*</span>}
-                        </label>
-                        {renderFieldControl(fieldReq)}
-                      </div>
+                    {unboundFieldRequirements.map((fieldReq) => (<div key={`unbound-${fieldReq.nodeId}-${fieldReq.field}`} className="space-y-2 pl-3 border-l-2 border-white/10">
+                        <div>
+                            <label className="text-xs text-white/70 mb-1 block">
+                                {fieldReq.label} {fieldReq.required && <span className="text-red-400">*</span>}
+                            </label>
+                            {renderFieldControl(fieldReq)}
+                        </div>
                     </div>))}
-              </div>);
-        })}
+                </div>)}
 
-          {unboundFieldRequirements.length > 0 && (<div className="space-y-2">
-              <div className="font-medium text-sm text-white">Template fields</div>
-              <div className="text-xs text-muted-foreground">
-                These fields are required but not tied to a credential.
-              </div>
-              {unboundFieldRequirements.map((fieldReq) => (<div key={`unbound-${fieldReq.nodeId}-${fieldReq.field}`} className="space-y-2 pl-3 border-l-2 border-white/10">
-                  <div>
-                    <label className="text-xs text-white/70 mb-1 block">
-                      {fieldReq.label} {fieldReq.required && <span className="text-red-400">*</span>}
-                    </label>
-                    {renderFieldControl(fieldReq)}
-                  </div>
-                </div>))}
-            </div>)}
+                {template.setupMode === "needs_input" && template.inputRequirements && template.inputRequirements.length > 0 && (<div className="mt-4 p-3 rounded-md border border-blue-500/30 bg-blue-500/10">
+                    <div className="text-sm font-medium text-blue-200 mb-2">
+                        Additional Setup Required
+                    </div>
+                    <div className="text-xs text-blue-200/80 space-y-1">
+                        {template.inputRequirements.map((req, idx) => (<div key={idx}>
+                            • {req.label}: {req.description}
+                        </div>))}
+                    </div>
+                </div>)}
 
-          {template.setupMode === "needs_input" && template.inputRequirements && template.inputRequirements.length > 0 && (<div className="mt-4 p-3 rounded-md border border-blue-500/30 bg-blue-500/10">
-              <div className="text-sm font-medium text-blue-200 mb-2">
-                Additional Setup Required
-              </div>
-              <div className="text-xs text-blue-200/80 space-y-1">
-                {template.inputRequirements.map((req, idx) => (<div key={idx}>
-                    • {req.label}: {req.description}
-                  </div>))}
-              </div>
-            </div>)}
+                {submitError && (<div className="rounded-md border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-200">
+                    {submitError}
+                </div>)}
+            </div>
 
-          {submitError && (<div className="rounded-md border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-200">
-              {submitError}
-            </div>)}
-        </div>
-
-        <DialogFooter>
-          <Button variant="outline" onClick={onClose} disabled={isSubmitting} className="bg-red-500 hover:bg-red-600 text-white border-red-500 hover:border-red-600">
-            Cancel
-          </Button>
-          <Button onClick={() => void handleConfirm()} disabled={!canProceed || isLoading || isSubmitting} className="bg-white hover:bg-gray-100 text-black disabled:bg-white/50 disabled:text-black/50">
-            {isSubmitting ? "Applying..." : "Create Workflow"}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
+            <DialogFooter>
+                <Button variant="outline" onClick={onClose} disabled={isSubmitting} className="bg-red-500 hover:bg-red-600 text-white border-red-500 hover:border-red-600">
+                    Cancel
+                </Button>
+                <Button onClick={() => void handleConfirm()} disabled={!canProceed || isLoading || isSubmitting} className="bg-white hover:bg-gray-100 text-black disabled:bg-white/50 disabled:text-black/50">
+                    {isSubmitting ? "Applying..." : "Create Workflow"}
+                </Button>
+            </DialogFooter>
+        </DialogContent>
     </Dialog>);
 }

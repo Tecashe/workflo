@@ -344,7 +344,7 @@ export const BUSINESS_TEMPLATES: Partial<WorkflowTemplate>[] = [
                     operation: "stk_push",
                     phoneNumber: "",
                     amount: "",
-                    accountReference: "Fynt Order",
+                    accountReference: "Floe Order",
                     transactionDesc: "Payment for services",
                 },
             },

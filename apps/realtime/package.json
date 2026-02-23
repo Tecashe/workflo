@@ -1,7 +1,7 @@
 {
   "name": "@fynt/realtime",
   "version": "0.1.0",
-  "description": "Fynt realtime websocket relay for execution events",
+  "description": "Floe realtime websocket relay for execution events",
   "type": "module",
   "private": true,
   "scripts": {

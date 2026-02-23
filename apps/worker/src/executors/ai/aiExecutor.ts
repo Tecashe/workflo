@@ -6,7 +6,7 @@ type SupportedAINodeType = "aiNode" | "openaiNode" | "anthropicNode" | "geminiNo
 type AIProvider = "openai" | "anthropic" | "gemini";
 type AIInputMode = "prompt" | "json";
 const MAX_PROMPT_CHARS = 200_000;
-const PROMPT_TRUNCATION_SUFFIX = "\n\n[Prompt truncated by Fynt to stay within model context limits]";
+const PROMPT_TRUNCATION_SUFFIX = "\n\n[Prompt truncated by Floe to stay within model context limits]";
 const AI_PROVIDER_BY_NODE_TYPE: Record<SupportedAINodeType, AIProvider> = {
     aiNode: "openai",
     openaiNode: "openai",
