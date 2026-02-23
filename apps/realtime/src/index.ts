@@ -57,6 +57,7 @@ interface RuntimeWebSocket {
   on(event: string, listener: (...args: unknown[]) => void): void;
 }
 
+
 function verifyExecutionTokenWithAnySecret(token: string): ExecutionStreamTokenPayload {
   let lastError: unknown;
   for (const secret of signingSecrets) {
@@ -85,11 +86,11 @@ function closeHttpUpgrade(socket: Duplex, statusCode: number, reason: string): v
 
   socket.write(
     `HTTP/1.1 ${statusCode} ${statusText}\r\n` +
-      "Connection: close\r\n" +
-      "Content-Type: text/plain\r\n" +
-      `Content-Length: ${Buffer.byteLength(reason)}\r\n` +
-      "\r\n" +
-      reason
+    "Connection: close\r\n" +
+    "Content-Type: text/plain\r\n" +
+    `Content-Length: ${Buffer.byteLength(reason)}\r\n` +
+    "\r\n" +
+    reason
   );
   socket.destroy();
 }
