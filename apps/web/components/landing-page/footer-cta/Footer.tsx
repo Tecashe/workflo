@@ -3,8 +3,8 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown } from "lucide-react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 
-const GITHUB_URL = "https://github.com/abhinavkale-dev/fynt";
-const X_URL = "https://x.com/Abhinavstwt";
+const GITHUB_URL = "https://github.com/";
+const X_URL = "https://x.com/";
 const PRIVACY_URL = "/privacy";
 const TERMS_URL = "/terms";
 
