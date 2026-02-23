@@ -100,6 +100,9 @@ importers:
       '@repo/prisma':
         specifier: workspace:*
         version: link:../../packages/prisma
+      '@repo/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
@@ -257,9 +260,6 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.19.1
-      '@types/pg':
-        specifier: ^8.16.0
-        version: 8.16.0
       tsx:
         specifier: ^4.19.0
         version: 4.21.0
