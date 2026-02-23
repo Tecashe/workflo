@@ -125,6 +125,37 @@ const filterNodeDataSchema = z.object({
     value: z.string().optional(),
     responseName: z.string().optional(),
 }).passthrough();
+const mpesaNodeDataSchema = z.object({
+    credentialId: z.string().optional(),
+    operation: z.enum(['stk_push', 'check_status', 'b2c']).optional(),
+    phoneNumber: z.string().optional(),
+    amount: z.string().optional(),
+    accountReference: z.string().optional(),
+    transactionDesc: z.string().optional(),
+    checkoutRequestId: z.string().optional(),
+    commandId: z.string().optional(),
+    remarks: z.string().optional(),
+    responseName: z.string().optional(),
+}).passthrough();
+const africastalkingNodeDataSchema = z.object({
+    credentialId: z.string().optional(),
+    operation: z.enum(['send_sms', 'send_airtime']).optional(),
+    to: z.string().optional(),
+    message: z.string().optional(),
+    airtimeAmount: z.string().optional(),
+    from: z.string().optional(),
+    responseName: z.string().optional(),
+}).passthrough();
+const whatsappNodeDataSchema = z.object({
+    credentialId: z.string().optional(),
+    to: z.string().optional(),
+    messageType: z.enum(['text', 'template']).optional(),
+    message: z.string().optional(),
+    templateName: z.string().optional(),
+    templateLanguage: z.string().optional(),
+    templateParams: z.string().optional(),
+    responseName: z.string().optional(),
+}).passthrough();
 const workflowNodeSchema = z.discriminatedUnion('type', [
     z.object({
         id: z.string(),
@@ -238,6 +269,24 @@ const workflowNodeSchema = z.discriminatedUnion('type', [
         id: z.string(),
         type: z.literal('filterNode'),
         data: filterNodeDataSchema,
+        position: positionSchema.optional(),
+    }).passthrough(),
+    z.object({
+        id: z.string(),
+        type: z.literal('mpesaNode'),
+        data: mpesaNodeDataSchema,
+        position: positionSchema.optional(),
+    }).passthrough(),
+    z.object({
+        id: z.string(),
+        type: z.literal('africastalkingNode'),
+        data: africastalkingNodeDataSchema,
+        position: positionSchema.optional(),
+    }).passthrough(),
+    z.object({
+        id: z.string(),
+        type: z.literal('whatsappNode'),
+        data: whatsappNodeDataSchema,
         position: positionSchema.optional(),
     }).passthrough()
 ]);

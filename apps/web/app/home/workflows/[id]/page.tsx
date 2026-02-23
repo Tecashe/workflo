@@ -868,124 +868,124 @@ const WorkflowId = ({ params }: {
     const isUnauthorizedError = errorCode === 'UNAUTHORIZED';
     const showInlineLoadWarning = Boolean(error && workflowData);
     if (!hasValidWorkflowId) {
-        return (<WorkflowRouteIssueState code="Invalid Workflow Link" title="This workflow URL is not valid" description="The link appears malformed. Open the workflow from your dashboard to continue."/>);
+        return (<WorkflowRouteIssueState code="Invalid Workflow Link" title="This workflow URL is not valid" description="The link appears malformed. Open the workflow from your dashboard to continue." />);
     }
     if (isLoading) {
         return <WorkflowLoadingState />;
     }
     if (error && !workflowData) {
         if (isNotFoundError) {
-            return (<WorkflowRouteIssueState code="Workflow Not Found" title="This workflow no longer exists" description="The workflow may have been deleted, moved, or you may not have access to it."/>);
+            return (<WorkflowRouteIssueState code="Workflow Not Found" title="This workflow no longer exists" description="The workflow may have been deleted, moved, or you may not have access to it." />);
         }
         if (isUnauthorizedError) {
-            return (<WorkflowRouteIssueState code="Authorization Required" title="Your session may have expired" description="Please sign in again from the Workflows page and reopen this workflow."/>);
+            return (<WorkflowRouteIssueState code="Authorization Required" title="Your session may have expired" description="Please sign in again from the Workflows page and reopen this workflow." />);
         }
         return (<WorkflowRouteIssueState code="Unable To Load" title="We could not load this workflow" description="Please try again from the Workflows page." onRetry={() => {
-                void refetch();
-            }}/>);
+            void refetch();
+        }} />);
     }
-    const usageCounterNode = usage ? (<UsageCounter runCount={usage.runCount} monthlyRunLimit={usage.monthlyRunLimit}/>) : null;
-    const saveStatusNode = (<SaveStatusIndicator saveStatus={saveStatus} lastSaveError={lastSaveError}/>);
+    const usageCounterNode = usage ? (<UsageCounter runCount={usage.runCount} monthlyRunLimit={usage.monthlyRunLimit} />) : null;
+    const saveStatusNode = (<SaveStatusIndicator saveStatus={saveStatus} lastSaveError={lastSaveError} />);
     return (<>
-      <div className="flex h-full min-h-0 items-center justify-center bg-[#151515] px-6 py-10 md:hidden">
-        <div className="w-full max-w-md rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.005))] p-8 text-center shadow-[0_20px_40px_-12px_rgba(0,0,0,0.45)]">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/85">
-            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g>
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"></circle>
-                <path d="M10.75 9.77333C10.75 10.8043 10.0784 11.5 9.25 11.5C8.42157 11.5 7.75 10.8043 7.75 9.77333C7.75 8.7424 8.42157 8 9.25 8C10.0784 8 10.75 8.7424 10.75 9.77333Z" fill="currentColor"></path>
-                <path d="M16.25 9.77333C16.25 10.8043 15.5784 11.5 14.75 11.5C13.9216 11.5 13.25 10.8043 13.25 9.77333C13.25 8.7424 13.9216 8 14.75 8C15.5784 8 16.25 8.7424 16.25 9.77333Z" fill="currentColor"></path>
-                <path d="M16.3179 11.8088C16.1444 11.6247 15.8555 11.6247 15.682 11.8088C13.8859 13.7148 13.5535 17 16.0001 17C18.4467 17 18.114 13.7148 16.3179 11.8088Z" fill="currentColor"></path>
-                <path d="M12 14.2295C12.5778 14.2295 13.1089 14.3862 13.5322 14.6113C13.5206 14.7069 13.5121 14.8017 13.5068 14.8955C13.4876 15.2364 13.5096 15.5853 13.5898 15.9189C13.1578 15.8344 12.6038 15.7139 12 15.7139C10.6193 15.7139 9.5 16.3463 9.5 15.7295C9.50041 15.1127 10.6195 14.2295 12 14.2295Z" fill="currentColor"></path>
-              </g>
-            </svg>
-          </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">Mobile Unsupported</p>
-          <h1 className="mt-2 text-2xl font-bold text-white">Sorry, this page is not available on mobile</h1>
-          <p className="mt-3 text-sm text-white/60">Please open this workflow on a tablet or desktop to continue editing and running it.</p>
-          <div className="mt-8 flex items-center justify-center">
-            <button type="button" onClick={handleBackNavigation} className="inline-flex h-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 text-sm font-medium text-white transition-colors hover:bg-white/10">
-              Back
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="hidden h-full flex-col overflow-hidden md:flex">
-        {graphRecoveryNotice && (<div className="mx-4 mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100">
-            {graphRecoveryNotice}
-          </div>)}
-        {graphIntegrityError && (<div className="mx-4 mt-3 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-100">
-            {graphIntegrityError}
-          </div>)}
-        {showInlineLoadWarning && (<div className="mx-4 mt-3 flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-100">
-            <span>
-              Live refresh failed. You are viewing cached workflow data.
-            </span>
-            <button type="button" onClick={() => {
-                void refetch();
-            }} className="inline-flex shrink-0 items-center rounded-md border border-amber-400/40 px-2.5 py-1 text-[11px] font-medium text-amber-100 transition-colors hover:bg-amber-400/10">
-              Retry
-            </button>
-          </div>)}
-        <TooltipProvider>
-          <ReactFlowProvider>
-            <EditorProvider onUpdateNodeData={updateNodeData} onDeleteNode={deleteNode} onAddNode={addNodeAtPosition} onDuplicateNode={duplicateNode} getNodeData={getNodeData} nodeStatuses={nodeStatuses} onExecuteNode={handleExecuteNodeWithEnvironmentGate} onExecuteWorkflow={handleExecuteWorkflowWithEnvironmentGate} canEditNodes={true}>
-              <WorkflowHeader isEditingTitle={isEditingTitle} titleInputRef={titleInputRef} tempTitle={tempTitle} workflowTitle={workflowTitle} currentWorkflowId={currentWorkflowId} isRunPanelOpen={isRunPanelOpen} isCreateWorkflowPending={isCreateWorkflowPending} usageCounter={usageCounterNode} saveStatusIndicator={saveStatusNode} onTempTitleChange={setTempTitle} onTitleSave={handleTitleSave} onTitleKeyDown={handleTitleKeyDown} onStartTitleEdit={() => setIsEditingTitle(true)} onToggleRunPanel={toggleRunPanel} onManualSave={handleManualSave}/>
-
-              <div className="flex flex-1 min-h-0">
-                <div className="flex-1 relative">
-                  <Drawer direction="right" open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-                    <div className="relative w-full h-full">
-                      <WorkflowCanvas nodes={canvasNodes} edges={edges} onNodesChange={handleNodesChange} onEdgesChange={handleEdgesChange} onConnect={onConnect} onExecute={handleExecuteWorkflowWithEnvironmentGate} onExecuteTriggerNow={handleExecuteTriggerNowWithEnvironmentGate} isExecuting={isExecutingWorkflow} isCronTriggerRunning={isCronTriggerRunning} onOpenDrawer={() => setIsDrawerOpen(prev => !prev)} onTidyUp={handleTidyUp}/>
-
-                      {nodes.length === 0 && <EmptyCanvasPrompt />}
-                      {nodes.length > 0 && <AddNodeButton showPulse={nodes.length === 1}/>}
-                    </div>
-
-                    <NodeDrawer onAddNode={handleAddNodeFromDrawer} nodes={nodes}/>
-                  </Drawer>
+        <div className="flex h-full min-h-0 items-center justify-center bg-[#151515] px-6 py-10 md:hidden">
+            <div className="w-full max-w-md rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.005))] p-8 text-center shadow-[0_20px_40px_-12px_rgba(0,0,0,0.45)]">
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/85">
+                    <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"></circle>
+                            <path d="M10.75 9.77333C10.75 10.8043 10.0784 11.5 9.25 11.5C8.42157 11.5 7.75 10.8043 7.75 9.77333C7.75 8.7424 8.42157 8 9.25 8C10.0784 8 10.75 8.7424 10.75 9.77333Z" fill="currentColor"></path>
+                            <path d="M16.25 9.77333C16.25 10.8043 15.5784 11.5 14.75 11.5C13.9216 11.5 13.25 10.8043 13.25 9.77333C13.25 8.7424 13.9216 8 14.75 8C15.5784 8 16.25 8.7424 16.25 9.77333Z" fill="currentColor"></path>
+                            <path d="M16.3179 11.8088C16.1444 11.6247 15.8555 11.6247 15.682 11.8088C13.8859 13.7148 13.5535 17 16.0001 17C18.4467 17 18.114 13.7148 16.3179 11.8088Z" fill="currentColor"></path>
+                            <path d="M12 14.2295C12.5778 14.2295 13.1089 14.3862 13.5322 14.6113C13.5206 14.7069 13.5121 14.8017 13.5068 14.8955C13.4876 15.2364 13.5096 15.5853 13.5898 15.9189C13.1578 15.8344 12.6038 15.7139 12 15.7139C10.6193 15.7139 9.5 16.3463 9.5 15.7295C9.50041 15.1127 10.6195 14.2295 12 14.2295Z" fill="currentColor"></path>
+                        </g>
+                    </svg>
                 </div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">Mobile Unsupported</p>
+                <h1 className="mt-2 text-2xl font-bold text-white">Sorry, this page is not available on mobile</h1>
+                <p className="mt-3 text-sm text-white/60">Please open this workflow on a tablet or desktop to continue editing and running it.</p>
+                <div className="mt-8 flex items-center justify-center">
+                    <button type="button" onClick={handleBackNavigation} className="inline-flex h-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 px-4 text-sm font-medium text-white transition-colors hover:bg-white/10">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                <AnimatePresence mode="wait">
-                  {isRunPanelOpen && (<motion.div key="run-panel" initial={{ width: 0, opacity: 0 }} animate={{ width: 320, opacity: 1 }} exit={{ width: 0, opacity: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="overflow-hidden shrink-0 h-full min-h-0 bg-[#101010]">
-                      <RunPanel runs={runs} isLoading={runsLoading} selectedRunId={selectedPanelRunId} onSelectRun={setSelectedPanelRunId} runDetail={runDetail} runDetailLoading={runDetailLoading} liveStatuses={panelLiveStatuses} workflowStatus={panelWorkflowStatus} workflowFinishedAt={panelWorkflowFinishedAt} selectedNodeId={selectedStatusNodeId} onSelectNode={setSelectedStatusNodeId} onClose={closeRunPanel} hasNextPage={hasMoreRuns} fetchNextPage={loadMoreRuns} isFetchingNextPage={isLoadingMoreRuns} isNodeFallbackPolling={isPanelNodeFallbackPolling} executionsHref={runPanelExecutionsHref}/>
-                    </motion.div>)}
-                </AnimatePresence>
-              </div>
-            </EditorProvider>
-          </ReactFlowProvider>
-
-          <TemplatePreflightModal template={template ?? null} open={showTemplateSetup} onClose={() => {
-            setShowTemplateSetup(false);
-            setTemplateSetupDismissed(true);
-        }} onConfirm={handleTemplateCredentialSetup}/>
-
-          {isExecutionBlockedInProduction && (<Dialog open={showExecutionBlockedDialog} onOpenChange={setShowExecutionBlockedDialog}>
-            <DialogContent className="max-w-md">
-              <DialogHeader className="sr-only">
-                <DialogTitle>Workflow Execution Is Disabled</DialogTitle>
-                <DialogDescription>
-                  The dev doesn&apos;t have money to host backend server.
-                </DialogDescription>
-              </DialogHeader>
-
-              <div className="p-0">
-                <Image src="/images/sad-cat-bubble.jpg" alt="Sad cat" width={640} height={640} className="mx-auto h-80 w-auto max-w-full object-contain"/>
-              </div>
-
-              <div className="flex items-center justify-center gap-2 pt-1">
-                <button type="button" onClick={() => setShowExecutionBlockedDialog(false)} className="inline-flex h-10 items-center justify-center rounded-md border border-white/20 px-4 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white">
-                  Stay Here
+        <div className="hidden h-full flex-col overflow-hidden md:flex">
+            {graphRecoveryNotice && (<div className="mx-4 mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100">
+                {graphRecoveryNotice}
+            </div>)}
+            {graphIntegrityError && (<div className="mx-4 mt-3 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-100">
+                {graphIntegrityError}
+            </div>)}
+            {showInlineLoadWarning && (<div className="mx-4 mt-3 flex items-center justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-100">
+                <span>
+                    Live refresh failed. You are viewing cached workflow data.
+                </span>
+                <button type="button" onClick={() => {
+                    void refetch();
+                }} className="inline-flex shrink-0 items-center rounded-md border border-amber-400/40 px-2.5 py-1 text-[11px] font-medium text-amber-100 transition-colors hover:bg-amber-400/10">
+                    Retry
                 </button>
-                <a href="https://github.com/abhinavkale-dev/fynt" target="_blank" rel="noopener noreferrer" className="inline-flex h-10 items-center justify-center rounded-md bg-[#F04D26] px-4 text-sm font-medium text-white transition-colors hover:bg-[#F04D26]/90">
-                  Self Host
-                </a>
-              </div>
-            </DialogContent>
-          </Dialog>)}
-        </TooltipProvider>
-      </div>
+            </div>)}
+            <TooltipProvider>
+                <ReactFlowProvider>
+                    <EditorProvider onUpdateNodeData={updateNodeData} onDeleteNode={deleteNode} onAddNode={addNodeAtPosition} onDuplicateNode={duplicateNode} getNodeData={getNodeData} nodeStatuses={nodeStatuses} onExecuteNode={handleExecuteNodeWithEnvironmentGate} onExecuteWorkflow={handleExecuteWorkflowWithEnvironmentGate} canEditNodes={true}>
+                        <WorkflowHeader isEditingTitle={isEditingTitle} titleInputRef={titleInputRef} tempTitle={tempTitle} workflowTitle={workflowTitle} currentWorkflowId={currentWorkflowId} isRunPanelOpen={isRunPanelOpen} isCreateWorkflowPending={isCreateWorkflowPending} usageCounter={usageCounterNode} saveStatusIndicator={saveStatusNode} onTempTitleChange={setTempTitle} onTitleSave={handleTitleSave} onTitleKeyDown={handleTitleKeyDown} onStartTitleEdit={() => setIsEditingTitle(true)} onToggleRunPanel={toggleRunPanel} onManualSave={handleManualSave} />
+
+                        <div className="flex flex-1 min-h-0">
+                            <div className="flex-1 relative">
+                                <Drawer direction="right" open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+                                    <div className="relative w-full h-full">
+                                        <WorkflowCanvas nodes={canvasNodes} edges={edges} onNodesChange={handleNodesChange} onEdgesChange={handleEdgesChange} onConnect={onConnect} onExecute={handleExecuteWorkflowWithEnvironmentGate} onExecuteTriggerNow={handleExecuteTriggerNowWithEnvironmentGate} isExecuting={isExecutingWorkflow} isCronTriggerRunning={isCronTriggerRunning} onOpenDrawer={() => setIsDrawerOpen(prev => !prev)} onTidyUp={handleTidyUp} />
+
+                                        {nodes.length === 0 && <EmptyCanvasPrompt />}
+                                        {nodes.length > 0 && <AddNodeButton showPulse={nodes.length === 1} />}
+                                    </div>
+
+                                    <NodeDrawer onAddNode={handleAddNodeFromDrawer} nodes={nodes} />
+                                </Drawer>
+                            </div>
+
+                            <AnimatePresence mode="wait">
+                                {isRunPanelOpen && (<motion.div key="run-panel" initial={{ width: 0, opacity: 0 }} animate={{ width: 320, opacity: 1 }} exit={{ width: 0, opacity: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 28 }} className="overflow-hidden shrink-0 h-full min-h-0 bg-[#101010]">
+                                    <RunPanel runs={runs} isLoading={runsLoading} selectedRunId={selectedPanelRunId} onSelectRun={setSelectedPanelRunId} runDetail={runDetail} runDetailLoading={runDetailLoading} liveStatuses={panelLiveStatuses} workflowStatus={panelWorkflowStatus} workflowFinishedAt={panelWorkflowFinishedAt} selectedNodeId={selectedStatusNodeId} onSelectNode={setSelectedStatusNodeId} onClose={closeRunPanel} hasNextPage={hasMoreRuns} fetchNextPage={loadMoreRuns} isFetchingNextPage={isLoadingMoreRuns} isNodeFallbackPolling={isPanelNodeFallbackPolling} executionsHref={runPanelExecutionsHref} />
+                                </motion.div>)}
+                            </AnimatePresence>
+                        </div>
+                    </EditorProvider>
+                </ReactFlowProvider>
+
+                <TemplatePreflightModal template={template ?? null} open={showTemplateSetup} onClose={() => {
+                    setShowTemplateSetup(false);
+                    setTemplateSetupDismissed(true);
+                }} onConfirm={handleTemplateCredentialSetup} />
+
+                {isExecutionBlockedInProduction && (<Dialog open={showExecutionBlockedDialog} onOpenChange={setShowExecutionBlockedDialog}>
+                    <DialogContent className="max-w-md">
+                        <DialogHeader className="sr-only">
+                            <DialogTitle>Workflow Execution Is Disabled</DialogTitle>
+                            <DialogDescription>
+                                The dev doesn&apos;t have money to host backend server.
+                            </DialogDescription>
+                        </DialogHeader>
+
+                        <div className="p-0">
+                            <Image src="/images/sad-cat-bubble.jpg" alt="Sad cat" width={640} height={640} className="mx-auto h-80 w-auto max-w-full object-contain" />
+                        </div>
+
+                        <div className="flex items-center justify-center gap-2 pt-1">
+                            <button type="button" onClick={() => setShowExecutionBlockedDialog(false)} className="inline-flex h-10 items-center justify-center rounded-md border border-white/20 px-4 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white">
+                                Stay Here
+                            </button>
+                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="inline-flex h-10 items-center justify-center rounded-md bg-[#F04D26] px-4 text-sm font-medium text-white transition-colors hover:bg-[#F04D26]/90">
+                                Self Host
+                            </a>
+                        </div>
+                    </DialogContent>
+                </Dialog>)}
+            </TooltipProvider>
+        </div>
     </>);
 };
 export default WorkflowId;

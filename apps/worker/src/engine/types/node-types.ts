@@ -123,6 +123,37 @@ export interface FilterNodeData {
     value?: string;
     responseName?: string;
 }
+export interface MpesaNodeData {
+    credentialId?: string;
+    operation?: 'stk_push' | 'check_status' | 'b2c';
+    phoneNumber?: string;
+    amount?: string;
+    accountReference?: string;
+    transactionDesc?: string;
+    checkoutRequestId?: string;
+    commandId?: string;
+    remarks?: string;
+    responseName?: string;
+}
+export interface AfricasTalkingNodeData {
+    credentialId?: string;
+    operation?: 'send_sms' | 'send_airtime';
+    to?: string;
+    message?: string;
+    airtimeAmount?: string;
+    from?: string;
+    responseName?: string;
+}
+export interface WhatsAppNodeData {
+    credentialId?: string;
+    to?: string;
+    messageType?: 'text' | 'template';
+    message?: string;
+    templateName?: string;
+    templateLanguage?: string;
+    templateParams?: string;
+    responseName?: string;
+}
 export type WorkflowNode = {
     id: string;
     type: 'discordNode';
@@ -217,6 +248,21 @@ export type WorkflowNode = {
     id: string;
     type: 'filterNode';
     data: FilterNodeData;
+    position?: Position;
+} | {
+    id: string;
+    type: 'mpesaNode';
+    data: MpesaNodeData;
+    position?: Position;
+} | {
+    id: string;
+    type: 'africastalkingNode';
+    data: AfricasTalkingNodeData;
+    position?: Position;
+} | {
+    id: string;
+    type: 'whatsappNode';
+    data: WhatsAppNodeData;
     position?: Position;
 };
 export type NodeExecutionOutput = string | number | boolean | null | {

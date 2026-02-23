@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { MousePointer, Globe, Webhook, Clock3, GitBranch, Hourglass, FileText, Filter, Shuffle, } from 'lucide-react';
+import { MousePointer, Globe, Webhook, Clock3, GitBranch, Hourglass, FileText, Filter, Shuffle, Banknote, MessageSquare, Phone } from 'lucide-react';
 import { createElement } from 'react';
 export interface NodeUIMetadata {
     icon: ReactNode;
@@ -44,4 +44,7 @@ export const NODE_UI: Record<string, NodeUIMetadata> = {
     delayNode: { icon: icon(Hourglass), tint: 'bg-yellow-500/10 border-yellow-500/20' },
     logNode: { icon: icon(FileText), tint: 'bg-emerald-500/10 border-emerald-500/20' },
     transformNode: { icon: icon(Shuffle), tint: 'bg-cyan-500/10 border-cyan-500/20' },
+    mpesaNode: { icon: icon(Banknote), tint: 'bg-green-500/10 border-green-500/20' },
+    africastalkingNode: { icon: icon(MessageSquare), tint: 'bg-orange-500/10 border-orange-500/20' },
+    whatsappNode: { icon: icon(Phone), tint: 'bg-emerald-600/10 border-emerald-600/20' },
 };

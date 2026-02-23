@@ -46,6 +46,8 @@ const TEMPLATE_ORDER = [
     "weekly-trend-brief-discord",
     "content-repurpose-openai-discord",
     "release-risk-review-center",
+    "mpesa-payment-whatsapp-receipt",
+    "africastalking-bulk-sms-broadcast",
 ] as const;
 function getTemplateDefinition(templateId: string): Partial<WorkflowTemplate> {
     const template = TEMPLATE_MAP.get(templateId);

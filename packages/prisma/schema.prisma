@@ -183,6 +183,9 @@ enum Platform {
   github
   google
   notion
+  mpesa
+  africastalking
+  whatsapp
 }
 
 model UsageRecord {

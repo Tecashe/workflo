@@ -3,6 +3,7 @@ import { redis } from "@repo/shared/redis";
 import type { WorkflowNode, NodeRun, NodeExecutionOutput } from "./types/index.js";
 import type { ExecutionMode } from "./executor.js";
 import { executeDiscordNode, executeHTTPNode, executeGitHubNode, executeNotionNode, executeSlackNode, executeAINode, executeWebhookTriggerNode, executeCronTriggerNode, executeConditionNode, executeDelayNode, executeLogNode, executeTransformNode, executeFilterNode, } from "../executors/index.js";
+import { executeMpesaNode, executeAfricasTalkingNode, executeWhatsAppNode } from "../executors/payment/index.js";
 const SSE_OUTPUT_MAX_BYTES = 8192;
 const AI_NODE_TYPES = new Set(['aiNode', 'openaiNode', 'anthropicNode', 'geminiNode']);
 const SOFT_FAILURE_NODE_TYPES = new Set([
@@ -13,6 +14,9 @@ const SOFT_FAILURE_NODE_TYPES = new Set([
     'slackNode',
     'discordNode',
     'transformNode',
+    'mpesaNode',
+    'africastalkingNode',
+    'whatsappNode',
 ]);
 function getAIProviderAlias(nodeType: string): 'openai' | 'anthropic' | 'gemini' | null {
     if (nodeType === 'aiNode' || nodeType === 'openaiNode')
@@ -261,6 +265,12 @@ async function executeNodeLogic(node: WorkflowNode, nodeRunId: string, runMetada
         case 'geminiNode':
         case 'anthropicNode':
             return await executeAINode(node.type, node.data, nodeRunId, runMetadata, executionMode, ownerUserId);
+        case 'mpesaNode':
+            return await executeMpesaNode(node.data, nodeRunId, runMetadata, executionMode, ownerUserId);
+        case 'africastalkingNode':
+            return await executeAfricasTalkingNode(node.data, nodeRunId, runMetadata, executionMode, ownerUserId);
+        case 'whatsappNode':
+            return await executeWhatsAppNode(node.data, nodeRunId, runMetadata, executionMode, ownerUserId);
         default:
             throw new Error(`Unsupported node type: ${node.type}`);
     }
