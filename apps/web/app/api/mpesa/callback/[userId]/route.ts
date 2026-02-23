@@ -34,9 +34,9 @@ function extractMetaItem(items: Array<{ Name: string; Value?: string | number }>
 
 export async function POST(
     req: NextRequest,
-    { params }: { params: { userId: string } }
+    { params }: { params: Promise<{ userId: string }> }
 ) {
-    const { userId } = params;
+    const { userId } = await params;
 
     if (!userId) {
         return NextResponse.json({ error: "Invalid callback URL" }, { status: 400 });
