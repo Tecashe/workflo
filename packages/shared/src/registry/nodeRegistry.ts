@@ -148,6 +148,30 @@ export const NODE_REGISTRY: NodeDefinitionCore[] = [
         isTrigger: false,
         configMeta: { title: 'Transform Configuration', subtitle: 'Configure data transformation template' },
     },
+    {
+        type: 'mpesaNode',
+        label: 'M-Pesa',
+        description: 'Send STK Push, check status, or B2C via Safaricom Daraja API',
+        category: 'integrations',
+        isTrigger: false,
+        configMeta: { title: 'M-Pesa Configuration', subtitle: 'Configure Safaricom Daraja API operation' },
+    },
+    {
+        type: 'africastalkingNode',
+        label: "Africa's Talking",
+        description: 'Send SMS or airtime via Africa\'s Talking',
+        category: 'integrations',
+        isTrigger: false,
+        configMeta: { title: "Africa's Talking Configuration", subtitle: 'Configure SMS or airtime operation' },
+    },
+    {
+        type: 'whatsappNode',
+        label: 'WhatsApp Business',
+        description: 'Send text or template messages via WhatsApp Business Cloud API',
+        category: 'integrations',
+        isTrigger: false,
+        configMeta: { title: 'WhatsApp Configuration', subtitle: 'Configure WhatsApp Business message' },
+    },
 ];
 const registryMap = new Map<string, NodeDefinitionCore>(NODE_REGISTRY.map((def) => [def.type, def]));
 export function getNodeDef(type: string): NodeDefinitionCore | undefined {

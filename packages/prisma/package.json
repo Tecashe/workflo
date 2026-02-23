@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "build": "echo 'Skipping Prisma build - using generated client'",
+    "build": "prisma generate --schema=../../packages/prisma/schema.prisma",
     "generate": "prisma generate",
     "push": "DOTENV_CONFIG_PATH=../../.env prisma --config ../../prisma.config.ts db push",
     "seed": "tsx src/seed.ts",

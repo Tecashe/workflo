@@ -63,6 +63,7 @@ const create = protectedProcedure
             "mpesa",
             "africastalking",
             "whatsapp",
+            "kraETR",
         ]),
         keys: z.record(z.string(), z.any()),
     }))
@@ -72,7 +73,7 @@ const create = protectedProcedure
             const credential = await ctx.prisma.credentials.create({
                 data: {
                     title: input.title,
-                    platform: input.platform,
+                    platform: input.platform as import("@repo/prisma").Platform,
                     keys: encryptedKeys,
                     userId: ctx.userId,
                 }

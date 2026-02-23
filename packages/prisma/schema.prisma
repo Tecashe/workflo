@@ -11,22 +11,26 @@ datasource db {
 }
 
 model User {
-  id              String         @id
-  name            String
-  email           String         @unique
-  emailVerified   Boolean        @default(false)
-  image           String?
-  plan            String         @default("free")
-  monthlyRunLimit Int            @default(1000)
-  maxConcurrent   Int            @default(2)
-  paidUntil       DateTime?
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  workflows       Workflow[]
-  credentials     Credentials[]
-  usageRecords    UsageRecord[]
-  sessions        Session[]
-  accounts        Account[]
+  id                       String         @id
+  name                     String
+  email                    String         @unique
+  emailVerified            Boolean        @default(false)
+  image                    String?
+  plan                     String         @default("free")
+  monthlyRunLimit          Int            @default(1000)
+  maxConcurrent            Int            @default(2)
+  paidUntil                DateTime?
+  stripeCustomerId         String?        @unique
+  stripeSubscriptionId     String?        @unique
+  stripeSubscriptionStatus String?
+  stripePlan               String?
+  createdAt                DateTime       @default(now())
+  updatedAt                DateTime       @updatedAt
+  workflows                Workflow[]
+  credentials              Credentials[]
+  usageRecords             UsageRecord[]
+  sessions                 Session[]
+  accounts                 Account[]
 }
 
 model Session {
@@ -186,6 +190,7 @@ enum Platform {
   mpesa
   africastalking
   whatsapp
+  kraETR
 }
 
 model UsageRecord {
