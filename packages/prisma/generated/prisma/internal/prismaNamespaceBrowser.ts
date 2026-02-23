@@ -92,6 +92,10 @@ export const UserScalarFieldEnum = {
   monthlyRunLimit: 'monthlyRunLimit',
   maxConcurrent: 'maxConcurrent',
   paidUntil: 'paidUntil',
+  stripeCustomerId: 'stripeCustomerId',
+  stripeSubscriptionId: 'stripeSubscriptionId',
+  stripeSubscriptionStatus: 'stripeSubscriptionStatus',
+  stripePlan: 'stripePlan',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

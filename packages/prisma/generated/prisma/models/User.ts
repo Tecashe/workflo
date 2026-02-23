@@ -46,6 +46,10 @@ export type UserMinAggregateOutputType = {
   monthlyRunLimit: number | null
   maxConcurrent: number | null
   paidUntil: Date | null
+  stripeCustomerId: string | null
+  stripeSubscriptionId: string | null
+  stripeSubscriptionStatus: string | null
+  stripePlan: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -60,6 +64,10 @@ export type UserMaxAggregateOutputType = {
   monthlyRunLimit: number | null
   maxConcurrent: number | null
   paidUntil: Date | null
+  stripeCustomerId: string | null
+  stripeSubscriptionId: string | null
+  stripeSubscriptionStatus: string | null
+  stripePlan: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -74,6 +82,10 @@ export type UserCountAggregateOutputType = {
   monthlyRunLimit: number
   maxConcurrent: number
   paidUntil: number
+  stripeCustomerId: number
+  stripeSubscriptionId: number
+  stripeSubscriptionStatus: number
+  stripePlan: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -100,6 +112,10 @@ export type UserMinAggregateInputType = {
   monthlyRunLimit?: true
   maxConcurrent?: true
   paidUntil?: true
+  stripeCustomerId?: true
+  stripeSubscriptionId?: true
+  stripeSubscriptionStatus?: true
+  stripePlan?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -114,6 +130,10 @@ export type UserMaxAggregateInputType = {
   monthlyRunLimit?: true
   maxConcurrent?: true
   paidUntil?: true
+  stripeCustomerId?: true
+  stripeSubscriptionId?: true
+  stripeSubscriptionStatus?: true
+  stripePlan?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -128,6 +148,10 @@ export type UserCountAggregateInputType = {
   monthlyRunLimit?: true
   maxConcurrent?: true
   paidUntil?: true
+  stripeCustomerId?: true
+  stripeSubscriptionId?: true
+  stripeSubscriptionStatus?: true
+  stripePlan?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -229,6 +253,10 @@ export type UserGroupByOutputType = {
   monthlyRunLimit: number
   maxConcurrent: number
   paidUntil: Date | null
+  stripeCustomerId: string | null
+  stripeSubscriptionId: string | null
+  stripeSubscriptionStatus: string | null
+  stripePlan: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -266,6 +294,10 @@ export type UserWhereInput = {
   monthlyRunLimit?: Prisma.IntFilter<"User"> | number
   maxConcurrent?: Prisma.IntFilter<"User"> | number
   paidUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  stripeCustomerId?: Prisma.StringNullableFilter<"User"> | string | null
+  stripeSubscriptionId?: Prisma.StringNullableFilter<"User"> | string | null
+  stripeSubscriptionStatus?: Prisma.StringNullableFilter<"User"> | string | null
+  stripePlan?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   workflows?: Prisma.WorkflowListRelationFilter
@@ -285,6 +317,10 @@ export type UserOrderByWithRelationInput = {
   monthlyRunLimit?: Prisma.SortOrder
   maxConcurrent?: Prisma.SortOrder
   paidUntil?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeCustomerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSubscriptionStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripePlan?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   workflows?: Prisma.WorkflowOrderByRelationAggregateInput
@@ -297,6 +333,8 @@ export type UserOrderByWithRelationInput = {
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
+  stripeCustomerId?: string
+  stripeSubscriptionId?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -307,6 +345,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   monthlyRunLimit?: Prisma.IntFilter<"User"> | number
   maxConcurrent?: Prisma.IntFilter<"User"> | number
   paidUntil?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  stripeSubscriptionStatus?: Prisma.StringNullableFilter<"User"> | string | null
+  stripePlan?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   workflows?: Prisma.WorkflowListRelationFilter
@@ -314,7 +354,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   usageRecords?: Prisma.UsageRecordListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
-}, "id" | "email">
+}, "id" | "email" | "stripeCustomerId" | "stripeSubscriptionId">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -326,6 +366,10 @@ export type UserOrderByWithAggregationInput = {
   monthlyRunLimit?: Prisma.SortOrder
   maxConcurrent?: Prisma.SortOrder
   paidUntil?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeCustomerId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSubscriptionStatus?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripePlan?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -348,6 +392,10 @@ export type UserScalarWhereWithAggregatesInput = {
   monthlyRunLimit?: Prisma.IntWithAggregatesFilter<"User"> | number
   maxConcurrent?: Prisma.IntWithAggregatesFilter<"User"> | number
   paidUntil?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  stripeCustomerId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  stripeSubscriptionId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  stripeSubscriptionStatus?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  stripePlan?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -362,6 +410,10 @@ export type UserCreateInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowCreateNestedManyWithoutUserInput
@@ -381,6 +433,10 @@ export type UserUncheckedCreateInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutUserInput
@@ -400,6 +456,10 @@ export type UserUpdateInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUpdateManyWithoutUserNestedInput
@@ -419,6 +479,10 @@ export type UserUncheckedUpdateInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutUserNestedInput
@@ -438,6 +502,10 @@ export type UserCreateManyInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -452,6 +520,10 @@ export type UserUpdateManyMutationInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -466,6 +538,10 @@ export type UserUncheckedUpdateManyInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -480,6 +556,10 @@ export type UserCountOrderByAggregateInput = {
   monthlyRunLimit?: Prisma.SortOrder
   maxConcurrent?: Prisma.SortOrder
   paidUntil?: Prisma.SortOrder
+  stripeCustomerId?: Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrder
+  stripeSubscriptionStatus?: Prisma.SortOrder
+  stripePlan?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -499,6 +579,10 @@ export type UserMaxOrderByAggregateInput = {
   monthlyRunLimit?: Prisma.SortOrder
   maxConcurrent?: Prisma.SortOrder
   paidUntil?: Prisma.SortOrder
+  stripeCustomerId?: Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrder
+  stripeSubscriptionStatus?: Prisma.SortOrder
+  stripePlan?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -513,6 +597,10 @@ export type UserMinOrderByAggregateInput = {
   monthlyRunLimit?: Prisma.SortOrder
   maxConcurrent?: Prisma.SortOrder
   paidUntil?: Prisma.SortOrder
+  stripeCustomerId?: Prisma.SortOrder
+  stripeSubscriptionId?: Prisma.SortOrder
+  stripeSubscriptionStatus?: Prisma.SortOrder
+  stripePlan?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -644,6 +732,10 @@ export type UserCreateWithoutSessionsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowCreateNestedManyWithoutUserInput
@@ -662,6 +754,10 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutUserInput
@@ -696,6 +792,10 @@ export type UserUpdateWithoutSessionsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUpdateManyWithoutUserNestedInput
@@ -714,6 +814,10 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutUserNestedInput
@@ -732,6 +836,10 @@ export type UserCreateWithoutAccountsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowCreateNestedManyWithoutUserInput
@@ -750,6 +858,10 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutUserInput
@@ -784,6 +896,10 @@ export type UserUpdateWithoutAccountsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUpdateManyWithoutUserNestedInput
@@ -802,6 +918,10 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutUserNestedInput
@@ -820,6 +940,10 @@ export type UserCreateWithoutWorkflowsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   credentials?: Prisma.CredentialsCreateNestedManyWithoutUserInput
@@ -838,6 +962,10 @@ export type UserUncheckedCreateWithoutWorkflowsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   credentials?: Prisma.CredentialsUncheckedCreateNestedManyWithoutUserInput
@@ -872,6 +1000,10 @@ export type UserUpdateWithoutWorkflowsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credentials?: Prisma.CredentialsUpdateManyWithoutUserNestedInput
@@ -890,6 +1022,10 @@ export type UserUncheckedUpdateWithoutWorkflowsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   credentials?: Prisma.CredentialsUncheckedUpdateManyWithoutUserNestedInput
@@ -908,6 +1044,10 @@ export type UserCreateWithoutCredentialsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowCreateNestedManyWithoutUserInput
@@ -926,6 +1066,10 @@ export type UserUncheckedCreateWithoutCredentialsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutUserInput
@@ -960,6 +1104,10 @@ export type UserUpdateWithoutCredentialsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUpdateManyWithoutUserNestedInput
@@ -978,6 +1126,10 @@ export type UserUncheckedUpdateWithoutCredentialsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutUserNestedInput
@@ -996,6 +1148,10 @@ export type UserCreateWithoutUsageRecordsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowCreateNestedManyWithoutUserInput
@@ -1014,6 +1170,10 @@ export type UserUncheckedCreateWithoutUsageRecordsInput = {
   monthlyRunLimit?: number
   maxConcurrent?: number
   paidUntil?: Date | string | null
+  stripeCustomerId?: string | null
+  stripeSubscriptionId?: string | null
+  stripeSubscriptionStatus?: string | null
+  stripePlan?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutUserInput
@@ -1048,6 +1208,10 @@ export type UserUpdateWithoutUsageRecordsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUpdateManyWithoutUserNestedInput
@@ -1066,6 +1230,10 @@ export type UserUncheckedUpdateWithoutUsageRecordsInput = {
   monthlyRunLimit?: Prisma.IntFieldUpdateOperationsInput | number
   maxConcurrent?: Prisma.IntFieldUpdateOperationsInput | number
   paidUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  stripeCustomerId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripeSubscriptionStatus?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  stripePlan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutUserNestedInput
@@ -1151,6 +1319,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   monthlyRunLimit?: boolean
   maxConcurrent?: boolean
   paidUntil?: boolean
+  stripeCustomerId?: boolean
+  stripeSubscriptionId?: boolean
+  stripeSubscriptionStatus?: boolean
+  stripePlan?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   workflows?: boolean | Prisma.User$workflowsArgs<ExtArgs>
@@ -1171,6 +1343,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   monthlyRunLimit?: boolean
   maxConcurrent?: boolean
   paidUntil?: boolean
+  stripeCustomerId?: boolean
+  stripeSubscriptionId?: boolean
+  stripeSubscriptionStatus?: boolean
+  stripePlan?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -1185,6 +1361,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   monthlyRunLimit?: boolean
   maxConcurrent?: boolean
   paidUntil?: boolean
+  stripeCustomerId?: boolean
+  stripeSubscriptionId?: boolean
+  stripeSubscriptionStatus?: boolean
+  stripePlan?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -1199,11 +1379,15 @@ export type UserSelectScalar = {
   monthlyRunLimit?: boolean
   maxConcurrent?: boolean
   paidUntil?: boolean
+  stripeCustomerId?: boolean
+  stripeSubscriptionId?: boolean
+  stripeSubscriptionStatus?: boolean
+  stripePlan?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "plan" | "monthlyRunLimit" | "maxConcurrent" | "paidUntil" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "plan" | "monthlyRunLimit" | "maxConcurrent" | "paidUntil" | "stripeCustomerId" | "stripeSubscriptionId" | "stripeSubscriptionStatus" | "stripePlan" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   workflows?: boolean | Prisma.User$workflowsArgs<ExtArgs>
   credentials?: boolean | Prisma.User$credentialsArgs<ExtArgs>
@@ -1234,6 +1418,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     monthlyRunLimit: number
     maxConcurrent: number
     paidUntil: Date | null
+    stripeCustomerId: string | null
+    stripeSubscriptionId: string | null
+    stripeSubscriptionStatus: string | null
+    stripePlan: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1673,6 +1861,10 @@ export interface UserFieldRefs {
   readonly monthlyRunLimit: Prisma.FieldRef<"User", 'Int'>
   readonly maxConcurrent: Prisma.FieldRef<"User", 'Int'>
   readonly paidUntil: Prisma.FieldRef<"User", 'DateTime'>
+  readonly stripeCustomerId: Prisma.FieldRef<"User", 'String'>
+  readonly stripeSubscriptionId: Prisma.FieldRef<"User", 'String'>
+  readonly stripeSubscriptionStatus: Prisma.FieldRef<"User", 'String'>
+  readonly stripePlan: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

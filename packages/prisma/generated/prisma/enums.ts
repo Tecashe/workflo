@@ -18,7 +18,11 @@ export const Platform = {
   gemini: 'gemini',
   github: 'github',
   google: 'google',
-  notion: 'notion'
+  notion: 'notion',
+  mpesa: 'mpesa',
+  africastalking: 'africastalking',
+  whatsapp: 'whatsapp',
+  kraETR: 'kraETR'
 } as const
 
 export type Platform = (typeof Platform)[keyof typeof Platform]

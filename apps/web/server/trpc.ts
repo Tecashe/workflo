@@ -46,7 +46,11 @@ const isAuthenticated = t.middleware(async ({ ctx, next }) => {
         }
         throw new TRPCError({ code: 'UNAUTHORIZED' });
     }
-    return next();
+    return next({
+        ctx: {
+            userId: ctx.userId,
+        }
+    });
 });
 export const router = t.router;
 export const publicProcedure = t.procedure;

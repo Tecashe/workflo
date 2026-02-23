@@ -12,7 +12,7 @@ const PLAN_LIMITS: Record<string, number> = {
 
 async function getStripe() {
     const Stripe = (await import("stripe")).default;
-    return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-01-27.acacia" });
+    return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2025-02-24.acacia" });
 }
 
 export async function POST(req: NextRequest) {
@@ -52,12 +52,9 @@ export async function POST(req: NextRequest) {
                             stripeSubscriptionId: String(session.subscription),
                             stripeSubscriptionStatus: "active",
                             stripePlan: plan,
+                            plan: plan,
+                            monthlyRunLimit: PLAN_LIMITS[plan] ?? 2000,
                         },
-                    });
-                    // Update the run limit on the usage record
-                    await prisma.usageRecord.updateMany({
-                        where: { userId },
-                        data: { monthlyRunLimit: PLAN_LIMITS[plan] ?? 2000 },
                     });
                 }
                 break;
@@ -74,14 +71,12 @@ export async function POST(req: NextRequest) {
                             stripeSubscriptionId: sub.id,
                             stripeSubscriptionStatus: sub.status,
                             stripePlan: plan,
+                            ...(sub.status === "active" ? {
+                                plan: plan,
+                                monthlyRunLimit: PLAN_LIMITS[plan] ?? 2000,
+                            } : {}),
                         },
                     });
-                    if (sub.status === "active") {
-                        await prisma.usageRecord.updateMany({
-                            where: { userId },
-                            data: { monthlyRunLimit: PLAN_LIMITS[plan] ?? 2000 },
-                        });
-                    }
                 }
                 break;
             }
@@ -95,11 +90,9 @@ export async function POST(req: NextRequest) {
                         data: {
                             stripeSubscriptionStatus: "cancelled",
                             stripePlan: "free",
+                            plan: "free",
+                            monthlyRunLimit: PLAN_LIMITS.free,
                         },
-                    });
-                    await prisma.usageRecord.updateMany({
-                        where: { userId },
-                        data: { monthlyRunLimit: PLAN_LIMITS.free },
                     });
                 }
                 break;
