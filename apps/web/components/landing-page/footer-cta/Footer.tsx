@@ -433,7 +433,7 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a href="https://discord.gg/fynt" className="text-white/60 hover:text-white text-sm transition-colors">
+                <a href="https://discord.gg" className="text-white/60 hover:text-white text-sm transition-colors">
                   Discord
                 </a>
               </li>
@@ -504,14 +504,14 @@ export function Footer() {
 
       <div className="hidden xl:flex relative items-center justify-center translate-y-[10%] -mt-20">
 
-        <svg width="100%" height="auto" viewBox="0 0 1366 494" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-6xl w-full h-auto absolute opacity-20">
+        {/* <svg width="100%" height="auto" viewBox="0 0 1366 494" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-6xl w-full h-auto absolute opacity-20">
           <path d="M31.605 484V120.364h240.767v63.387H108.487v86.648h147.905v63.388H108.487V484zM302.78 120.364h86.115l82.919 156.605h3.551l82.919-156.605h86.115L511.763 355.449V484h-76.349V355.449zm687.766 0V484H924.14L765.936 255.129h-2.664V484H686.39V120.364h67.472l156.96 228.693h3.196V120.364zm49.675 63.387v-63.387h298.65v63.387h-111.33V484h-76V183.751z" fill="none" stroke="#fff" strokeWidth="3" />
         </svg>
 
 
         <svg width="100%" height="auto" viewBox="0 0 1366 494" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-6xl w-full h-auto relative opacity-20">
           <path d="M31.605 484V120.364h240.767v63.387H108.487v86.648h147.905v63.388H108.487V484zM302.78 120.364h86.115l82.919 156.605h3.551l82.919-156.605h86.115L511.763 355.449V484h-76.349V355.449zm687.766 0V484H924.14L765.936 255.129h-2.664V484H686.39V120.364h67.472l156.96 228.693h3.196V120.364zm49.675 63.387v-63.387h298.65v63.387h-111.33V484h-76V183.751z" fill="#fff" />
-        </svg>
+        </svg> */}
       </div>
     </div>
   </footer>);

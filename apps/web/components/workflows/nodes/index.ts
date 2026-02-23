@@ -15,3 +15,7 @@ export { default as DelayNode } from './logic/DelayNode';
 export { default as TransformNode } from './logic/TransformNode';
 export { default as FilterNode } from './logic/FilterNode';
 export { default as LogNode } from './utilities/LogNode';
+export { default as MpesaNode } from './integrations/MpesaNode';
+export { default as KraEtrNode } from './integrations/KraEtrNode';
+export { default as WhatsAppNode } from './integrations/WhatsAppNode';
+export { default as EmailNode } from './integrations/EmailNode';

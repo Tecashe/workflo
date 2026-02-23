@@ -1,4 +1,4 @@
-import { AINode, AnthropicNode, ConditionNode, CronTriggerNode, DelayNode, DiscordNode, FilterNode, GeminiNode, GitHubNode, HTTPNode, LogNode, NotionNode, OpenAINode, SlackNode, TransformNode, TriggerNode, WebhookTriggerNode, } from '@/components/workflows/nodes';
+import { AINode, AnthropicNode, ConditionNode, CronTriggerNode, DelayNode, DiscordNode, FilterNode, GeminiNode, GitHubNode, HTTPNode, LogNode, NotionNode, OpenAINode, SlackNode, TransformNode, TriggerNode, WebhookTriggerNode, MpesaNode, KraEtrNode, WhatsAppNode, EmailNode } from '@/components/workflows/nodes';
 export const nodeTypes = {
     aiNode: AINode,
     triggerNode: TriggerNode,
@@ -18,5 +18,9 @@ export const nodeTypes = {
     logNode: LogNode,
     transformNode: TransformNode,
     filterNode: FilterNode,
+    mpesaNode: MpesaNode,
+    whatsappNode: WhatsAppNode,
+    kraEtrNode: KraEtrNode,
+    emailNode: EmailNode,
 } as const;
 export type NodeType = keyof typeof nodeTypes;
