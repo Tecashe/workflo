@@ -3,20 +3,20 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { TRPCProvider } from "@/lib/trpc/Provider";
 import { Analytics } from "@vercel/analytics/next";
-
+//
 const siteUrl =
-  process.env.NEXT_PUBLIC_APP_URL ??
-  process.env.BETTER_AUTH_URL ??
-  (process.env.NODE_ENV === "production"
-    ? "https://fynt.in"
-    : "http://localhost:3000");
+    process.env.NEXT_PUBLIC_APP_URL ??
+    process.env.BETTER_AUTH_URL ??
+    (process.env.NODE_ENV === "production"
+        ? "https://fynt.in"
+        : "http://localhost:3000");
 const normalizedSiteUrl = siteUrl.replace(/\/+$/, "");
 const socialImagePath = "/og/fynt-og.webp";
 const socialImageUrl = `${normalizedSiteUrl}${socialImagePath}`;
 
 const siteTitle = "Fynt | AI Workflow Automation Platform for Modern Teams";
 const siteDescription =
-  "Build, run, and monitor AI-powered workflows that connect your apps, trigger actions, and keep operations moving with templates you can launch in minutes.";
+    "Build, run, and monitor AI-powered workflows that connect your apps, trigger actions, and keep operations moving with templates you can launch in minutes.";
 
 const editorialNew = localFont({
     src: "../public/pp-editorial-new-regular.otf",
@@ -67,11 +67,11 @@ export default function RootLayout({ children, }: Readonly<{
         "--font-inter": 'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     } as React.CSSProperties;
     return (<html lang="en">
-      <body className={`${editorialNew.variable} antialiased`} style={fallbackFontVars}>
-        <TRPCProvider>
-          {children}
-        </TRPCProvider>
-        <Analytics />
-      </body>
+        <body className={`${editorialNew.variable} antialiased`} style={fallbackFontVars}>
+            <TRPCProvider>
+                {children}
+            </TRPCProvider>
+            <Analytics />
+        </body>
     </html>);
 }
