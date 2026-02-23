@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, } from "@/components/ui/dialog";
 import { getNodeDef } from "@repo/shared";
-import { AnthropicConfig, ConditionConfig, CronTriggerConfig, DelayConfig, DiscordConfig, FilterConfig, GeminiConfig, GitHubConfig, HTTPConfig, LogConfig, NotionConfig, OpenAIConfig, SlackConfig, TransformConfig, TriggerConfig, WebhookTriggerConfig, MpesaConfig, AfricasTalkingConfig, WhatsAppConfig, } from "../config";
+import { AnthropicConfig, ConditionConfig, CronTriggerConfig, DelayConfig, DiscordConfig, FilterConfig, GeminiConfig, GitHubConfig, HTTPConfig, LogConfig, NotionConfig, OpenAIConfig, SlackConfig, TransformConfig, TriggerConfig, WebhookTriggerConfig, MpesaConfig, AfricasTalkingConfig, WhatsAppConfig, KraEtrConfig, EmailConfig, } from "../config";
 interface NodeConfigDialogProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
@@ -79,6 +79,10 @@ export function NodeConfigDialog({ open, onOpenChange, nodeId, nodeType, nodeDat
                 return <AfricasTalkingConfig data={nodeData} onSave={handleSave} />;
             case 'whatsappNode':
                 return <WhatsAppConfig data={nodeData} onSave={handleSave} />;
+            case 'kraEtrNode':
+                return <KraEtrConfig data={nodeData} onSave={handleSave} />;
+            case 'emailNode':
+                return <EmailConfig data={nodeData} onSave={handleSave} />;
             default:
                 return <p className="text-white/50 text-sm">No configuration available for this node type.</p>;
         }

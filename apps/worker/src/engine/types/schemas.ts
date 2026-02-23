@@ -288,6 +288,41 @@ const workflowNodeSchema = z.discriminatedUnion('type', [
         type: z.literal('whatsappNode'),
         data: whatsappNodeDataSchema,
         position: positionSchema.optional(),
+    }).passthrough(),
+    z.object({
+        id: z.string(),
+        type: z.literal('kraEtrNode'),
+        data: z.object({
+            credentialId: z.string().optional(),
+            operation: z.enum(['issue_receipt']).optional(),
+            invoiceNumber: z.string().optional(),
+            totalAmount: z.string().optional(),
+            taxableAmount: z.string().optional(),
+            vatAmount: z.string().optional(),
+            buyerPin: z.string().optional(),
+            buyerName: z.string().optional(),
+            buyerPhone: z.string().optional(),
+            itemsJson: z.string().optional(),
+            responseName: z.string().optional(),
+            label: z.string().optional(),
+        }).passthrough(),
+        position: positionSchema.optional(),
+    }).passthrough(),
+    z.object({
+        id: z.string(),
+        type: z.literal('emailNode'),
+        data: z.object({
+            credentialId: z.string().optional(),
+            to: z.string().optional(),
+            subject: z.string().optional(),
+            body: z.string().optional(),
+            isHtml: z.boolean().optional(),
+            fromName: z.string().optional(),
+            replyTo: z.string().optional(),
+            responseName: z.string().optional(),
+            label: z.string().optional(),
+        }).passthrough(),
+        position: positionSchema.optional(),
     }).passthrough()
 ]);
 const workflowEdgeSchema = z.object({

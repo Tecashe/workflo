@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc/client";
 import { ValidationMessage } from "../../shared";
+import { useSession } from "@/lib/auth-client";
+import { Copy, CheckCircle2, Info } from "lucide-react";
 
 interface MpesaConfigProps {
     data: Record<string, any>;
@@ -35,6 +37,22 @@ export function MpesaConfig({ data, onSave }: MpesaConfigProps) {
         () => (credentialsQuery.data ?? []).filter((c) => c.platform === "mpesa"),
         [credentialsQuery.data]
     );
+
+    const { data: session } = useSession();
+    const [copied, setCopied] = useState(false);
+    const baseUrl = typeof window !== "undefined"
+        ? window.location.origin
+        : (process.env.NEXT_PUBLIC_APP_URL ?? "https://yourapp.fynt.app");
+    const callbackUrl = session?.user?.id
+        ? `${baseUrl}/api/mpesa/callback/${session.user.id}`
+        : null;
+
+    const copyCallbackUrl = () => {
+        if (!callbackUrl) return;
+        navigator.clipboard.writeText(callbackUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     const missingFields: string[] = [];
     if (!label.trim()) missingFields.push("Node Label");
@@ -71,6 +89,32 @@ export function MpesaConfig({ data, onSave }: MpesaConfigProps) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Auto-generated callback URL banner */}
+            {callbackUrl && (
+                <div className="rounded-lg border border-emerald-500/25 bg-emerald-500/10 p-3 space-y-2">
+                    <div className="flex items-center gap-2">
+                        <Info className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                        <p className="text-xs font-semibold text-emerald-300">Your M-Pesa Callback URL</p>
+                    </div>
+                    <p className="text-xs text-emerald-200/80 leading-relaxed">
+                        Paste this URL into the <strong>Daraja portal</strong> under your app's STK Push callback settings. Fynt handles the rest automatically.
+                    </p>
+                    <div className="flex items-center gap-2 bg-black/30 rounded-md px-2.5 py-1.5">
+                        <code className="text-xs text-emerald-300 font-mono flex-1 truncate">{callbackUrl}</code>
+                        <button
+                            type="button"
+                            onClick={copyCallbackUrl}
+                            className="shrink-0 text-emerald-400 hover:text-emerald-300 transition-colors"
+                            title="Copy to clipboard"
+                        >
+                            {copied ? <CheckCircle2 className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                        </button>
+                    </div>
+                    <p className="text-xs text-emerald-200/50">
+                        📍 Daraja Portal → Apps → Your App → Edit → STK Push Callback URL
+                    </p>
+                </div>
+            )}
             <div className="space-y-2">
                 <Label className="text-white/80">Node Label</Label>
                 <Input value={label} onChange={(e) => setLabel(e.target.value)} placeholder="M-Pesa" className={inputCls} />

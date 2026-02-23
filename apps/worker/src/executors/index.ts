@@ -4,3 +4,4 @@ export * from './flow/index.js';
 export * from './request/index.js';
 export * from './trigger/index.js';
 export * from './payment/index.js';
+export * from './email/index.js';

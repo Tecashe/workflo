@@ -23,6 +23,7 @@ const PLATFORMS = [
   { value: "africastalking", label: "Africa's Talking", logo: "/logo/africastalking.svg", description: "Send SMS and airtime across Africa" },
   { value: "whatsapp", label: "WhatsApp Business", logo: "/logo/whatsapp.svg", description: "WhatsApp Business Cloud API messages" },
   { value: "kraETR", label: "KRA ETR", logo: "/logo/kraETR.svg", description: "Kenya Revenue Authority e-Tax receipts" },
+  { value: "resend", label: "Resend Email", logo: "/logo/openai.svg", description: "Send transactional emails from your workflows" },
 ] as const;
 type PlatformValue = (typeof PLATFORMS)[number]["value"];
 type CredentialField = {
@@ -93,6 +94,10 @@ function getKeyFields(platform: PlatformValue): CredentialField[] {
         { key: "tillNumber", label: "Till Number", placeholder: "KRA-registered till number", inputType: "text" as const },
         { key: "deviceSerial", label: "Device Serial", placeholder: "ETR device serial", inputType: "text" as const },
         { key: "apiUrl", label: "Middleware API URL", placeholder: "https://etr.yourprovider.co.ke", inputType: "text" as const, helperText: "Base URL of your certified ETR middleware (Pesalink, Taxtech, etc.)" },
+      ];
+    case "resend":
+      return [
+        { key: "apiKey", label: "Resend API Key", placeholder: "re_...", helperText: "Get this from resend.com — free for up to 3,000 emails/month" },
       ];
     default:
       return [{ key: "apiKey", label: "API Key", placeholder: "" }];

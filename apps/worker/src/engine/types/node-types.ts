@@ -154,6 +154,29 @@ export interface WhatsAppNodeData {
     templateParams?: string;
     responseName?: string;
 }
+export interface KraEtrNodeData {
+    credentialId?: string;
+    operation?: 'issue_receipt';
+    invoiceNumber?: string;
+    totalAmount?: string;
+    taxableAmount?: string;
+    vatAmount?: string;
+    buyerPin?: string;
+    buyerName?: string;
+    buyerPhone?: string;
+    itemsJson?: string;
+    responseName?: string;
+}
+export interface EmailNodeData {
+    credentialId?: string;
+    to?: string;
+    subject?: string;
+    body?: string;
+    isHtml?: boolean;
+    fromName?: string;
+    replyTo?: string;
+    responseName?: string;
+}
 export type WorkflowNode = {
     id: string;
     type: 'discordNode';
@@ -263,6 +286,16 @@ export type WorkflowNode = {
     id: string;
     type: 'whatsappNode';
     data: WhatsAppNodeData;
+    position?: Position;
+} | {
+    id: string;
+    type: 'kraEtrNode';
+    data: KraEtrNodeData;
+    position?: Position;
+} | {
+    id: string;
+    type: 'emailNode';
+    data: EmailNodeData;
     position?: Position;
 };
 export type NodeExecutionOutput = string | number | boolean | null | {

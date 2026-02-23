@@ -203,6 +203,26 @@ model UsageRecord {
   @@unique([userId, month])
 }
 
+model MpesaPayment {
+  id                String   @id @default(uuid())
+  userId            String
+  merchantRequestId String
+  checkoutRequestId String   @unique
+  status            String   // "success" | "failed" | "pending"
+  resultCode        String
+  resultDesc        String
+  amount            Float?
+  receiptNumber     String?
+  phoneNumber       String?
+  transactionDate   String?
+  rawPayload        String?  @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([userId])
+  @@index([checkoutRequestId])
+}
+
 enum WorkflowStatus {
   Pending
   Success

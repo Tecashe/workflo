@@ -12,6 +12,8 @@ export { NotionConfig } from './integrations/NotionConfig';
 export { MpesaConfig } from './integrations/MpesaConfig';
 export { AfricasTalkingConfig } from './integrations/AfricasTalkingConfig';
 export { WhatsAppConfig } from './integrations/WhatsAppConfig';
+export { KraEtrConfig } from './integrations/KraEtrConfig';
+export { EmailConfig } from './integrations/EmailConfig';
 export { ConditionConfig } from './logic/ConditionConfig';
 export { DelayConfig } from './logic/DelayConfig';
 export { TransformConfig } from './logic/TransformConfig';

@@ -172,6 +172,22 @@ export const NODE_REGISTRY: NodeDefinitionCore[] = [
         isTrigger: false,
         configMeta: { title: 'WhatsApp Configuration', subtitle: 'Configure WhatsApp Business message' },
     },
+    {
+        type: 'kraEtrNode',
+        label: 'KRA ETR',
+        description: 'Issue a KRA-compliant electronic tax receipt via certified ETR middleware',
+        category: 'integrations',
+        isTrigger: false,
+        configMeta: { title: 'KRA ETR Configuration', subtitle: 'Issue a Kenya Revenue Authority tax receipt' },
+    },
+    {
+        type: 'emailNode',
+        label: 'Send Email',
+        description: 'Send transactional emails via Resend — receipts, notifications, OTPs',
+        category: 'integrations',
+        isTrigger: false,
+        configMeta: { title: 'Email Configuration', subtitle: 'Configure your email message' },
+    },
 ];
 const registryMap = new Map<string, NodeDefinitionCore>(NODE_REGISTRY.map((def) => [def.type, def]));
 export function getNodeDef(type: string): NodeDefinitionCore | undefined {
