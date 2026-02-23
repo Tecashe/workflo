@@ -1,4 +1,4 @@
-import type { MpesaNodeData, NodeExecutionOutput } from "../../engine/types/index.js";
+import type { NodeExecutionOutput } from "../../engine/types/index.js";
 import type { ExecutionMode } from "../../engine/executor.js";
 import { resolveCredential } from "../../engine/credentialResolver.js";
 import { parseTemplate } from "@repo/shared/parser";
@@ -17,9 +17,9 @@ interface ETRReceiptRequest {
     totalAmount: number;
     taxableAmount: number;
     vatAmount: number;
-    buyerPin?: string;
-    buyerName?: string;
-    buyerPhone?: string;
+    buyerPin?: string | undefined;
+    buyerName?: string | undefined;
+    buyerPhone?: string | undefined;
     items: Array<{ description: string; quantity: number; unitPrice: number; totalPrice: number }>;
     apiUrl: string;
 }
