@@ -482,10 +482,7 @@ export function Footer() {
           </div>
         </div>
 
-
         <FooterSectionSeparator />
-
-
         <div className="hidden xl:flex flex-col md:flex-row items-center justify-between pt-1 pb-6">
           <p className="text-white/60 text-sm mb-2 md:mb-0">
             © {currentYear} Floe. All rights reserved.
@@ -500,7 +497,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-
 
       <div className="hidden xl:flex relative items-center justify-center translate-y-[10%] -mt-20">
 
