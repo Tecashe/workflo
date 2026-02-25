@@ -93,7 +93,7 @@ Notes:
 ### 1. Clone and install
 
 ```sh
-git clone https://github.com/your-org/fynt.git
+git clone https://github.com/your-org/
 cd fynt
 pnpm install
 ```

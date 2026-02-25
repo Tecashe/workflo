@@ -8,6 +8,7 @@ import { NavSecondary } from "@/components/layout/navigation/nav-secondary";
 import { NavUser } from "@/components/layout/navigation/nav-user";
 import { WorkflowsIcon, CredentialsIcon, ExecutionsIcon, TemplatesIcon, UpgradeIcon, } from "@/components/icons";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, } from "@/components/ui/sidebar";
+import { BarChart2, Activity, Settings, HelpCircle } from "lucide-react";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession();
   const pathname = usePathname();
@@ -18,8 +19,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       "/home/templates",
       "/home/credentials",
       "/home/executions",
-    ] as const;
-    dashboardRoutes.forEach((route) => router.prefetch(route));
+      "/home/analytics",
+      "/home/activity",
+      "/home/settings",
+      "/home/help",
+    ];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    dashboardRoutes.forEach((route) => router.prefetch(route as any));
   }, [router]);
   const navData = {
     navMainPlatform: [
@@ -44,13 +50,37 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         isActive: pathname?.startsWith("/home/executions"),
       },
       {
+        title: "Activity",
+        url: "/home/activity",
+        icon: Activity,
+        isActive: pathname?.startsWith("/home/activity"),
+      },
+      {
         title: "Templates",
         url: "/home/templates",
         icon: TemplatesIcon,
         isActive: pathname?.startsWith("/home/templates"),
       },
+      {
+        title: "Analytics",
+        url: "/home/analytics",
+        icon: BarChart2,
+        isActive: pathname?.startsWith("/home/analytics"),
+      },
     ],
     navSecondary: [
+      {
+        title: "Help & Docs",
+        url: "/home/help",
+        icon: HelpCircle,
+        isActive: pathname?.startsWith("/home/help"),
+      },
+      {
+        title: "Settings",
+        url: "/home/settings",
+        icon: Settings,
+        isActive: pathname?.startsWith("/home/settings"),
+      },
       {
         title: "Upgrade to Pro",
         url: "/home/upgrade",
