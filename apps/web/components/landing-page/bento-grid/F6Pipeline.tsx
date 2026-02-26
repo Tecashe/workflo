@@ -46,7 +46,7 @@ export function F6Pipeline() {
 
             {/* Isometric pipeline SVG */}
             <div
-                className="absolute inset-0 flex items-center justify-center mt-[-30px] sm:mt-[-20px] lg:mt-[-10px]"
+                className="absolute inset-0 flex items-center justify-center pb-36 sm:pb-40 lg:pb-44"
                 onPointerEnter={(e) => { if (e.pointerType === 'mouse') setHovered(true); }}
                 onPointerLeave={(e) => { if (e.pointerType === 'mouse') setHovered(false); }}
             >
@@ -54,7 +54,8 @@ export function F6Pipeline() {
                     viewBox="0 0 372 280"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-[300px] h-[240px] sm:w-[330px] sm:h-[265px] lg:w-[360px] lg:h-[288px] xl:w-[390px] xl:h-[312px]"
+                    className="w-full h-full max-w-none"
+                    preserveAspectRatio="xMidYMid meet"
                 >
                     <defs>
                         <linearGradient id="pipe-orange-lr" x1="0" y1=".5" x2="1" y2=".5" gradientUnits="objectBoundingBox">

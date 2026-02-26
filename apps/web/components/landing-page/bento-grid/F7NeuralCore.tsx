@@ -80,12 +80,13 @@ export function F7NeuralCore() {
             </div>
 
             {/* Main isometric SVG */}
-            <div className="absolute inset-0 flex items-center justify-center mt-[-24px]">
+            <div className="absolute inset-0 flex items-center justify-center pb-36 sm:pb-40 lg:pb-44">
                 <svg
                     viewBox="0 0 400 310"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-[320px] h-[248px] sm:w-[350px] sm:h-[272px] md:w-[370px] md:h-[287px] lg:w-[400px] lg:h-[310px] xl:w-[430px] xl:h-[334px]"
+                    className="w-full h-full max-w-none"
+                    preserveAspectRatio="xMidYMid meet"
                 >
                     <defs>
                         <linearGradient id="nc-lr" x1="0" y1=".5" x2="1" y2=".5" gradientUnits="objectBoundingBox">

@@ -31,7 +31,7 @@ export function F5Security() {
 
             {/* Isometric vault illustration */}
             <div
-                className="absolute inset-0 flex items-end justify-center pb-10 sm:pb-12 lg:pb-14"
+                className="absolute inset-0 flex items-center justify-center pt-28 sm:pt-32 lg:pt-36"
                 onPointerEnter={(e) => { if (e.pointerType === 'mouse') setHovered(true); }}
                 onPointerLeave={(e) => { if (e.pointerType === 'mouse') setHovered(false); }}
                 onClick={handleToggle}
@@ -40,7 +40,8 @@ export function F5Security() {
                     viewBox="0 0 320 260"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="cursor-pointer w-[260px] h-[220px] sm:w-[280px] sm:h-[240px] lg:w-[310px] lg:h-[260px] xl:w-[340px] xl:h-[290px]"
+                    className="cursor-pointer w-full h-full max-w-none"
+                    preserveAspectRatio="xMidYMid meet"
                 >
                     <defs>
                         <linearGradient id="sec-grad-a" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
