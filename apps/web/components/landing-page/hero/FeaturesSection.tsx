@@ -1,4 +1,4 @@
-import { BentoGrid, BentoGrid2 } from '../bento-grid';
+import { BentoGrid, BentoGrid2, BentoGrid3 } from '../bento-grid';
 export function FeaturesSection() {
     return (<section id="features" className="relative min-h-screen bg-[#151515] py-10 sm:py-12 md:py-14 lg:py-16 xl:py-20 snap-start flex flex-col justify-center">
 
@@ -29,5 +29,14 @@ export function FeaturesSection() {
         </div>
 
         <BentoGrid2 />
+
+        {/* — Third bento row — Full-width node graph — */}
+        <div className="relative z-10 w-[92%] md:w-[88%] lg:w-[90%] mx-auto flex flex-col items-center gap-4 mt-12 sm:mt-14 md:mt-16 mb-8 sm:mb-10 md:mb-12">
+            <h2 className="font-serif italic text-[#7D7D87] text-center font-normal text-xl md:text-2xl leading-tight">
+                A living view of every workflow, node, and connection.
+            </h2>
+        </div>
+
+        <BentoGrid3 />
     </section>);
 }
