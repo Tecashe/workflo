@@ -3,6 +3,7 @@ import { AI_AUTOMATION_TEMPLATES } from "./aiAutomation";
 import { BUSINESS_TEMPLATES } from "./business";
 import { DATA_ETL_TEMPLATES } from "./dataEtl";
 import { DEVOPS_TEMPLATES } from "./devops";
+import { LOCAL_BUSINESS_TEMPLATES } from "./localBusiness";
 import { MARKETING_TEMPLATES } from "./marketing";
 import { WEBHOOKS_APIS_TEMPLATES } from "./webhooksApis";
 const ALL_TEMPLATE_DEFINITIONS: Partial<WorkflowTemplate>[] = [
@@ -10,6 +11,7 @@ const ALL_TEMPLATE_DEFINITIONS: Partial<WorkflowTemplate>[] = [
     ...AI_AUTOMATION_TEMPLATES,
     ...DEVOPS_TEMPLATES,
     ...BUSINESS_TEMPLATES,
+    ...LOCAL_BUSINESS_TEMPLATES,
     ...DATA_ETL_TEMPLATES,
     ...MARKETING_TEMPLATES,
 ];
@@ -48,6 +50,9 @@ const TEMPLATE_ORDER = [
     "release-risk-review-center",
     "mpesa-payment-whatsapp-receipt",
     "africastalking-bulk-sms-broadcast",
+    "restaurant-daily-sales-summary",
+    "order-mpesa-whatsapp-receipt",
+    "low-stock-reorder-alert",
 ] as const;
 function getTemplateDefinition(templateId: string): Partial<WorkflowTemplate> {
     const template = TEMPLATE_MAP.get(templateId);
