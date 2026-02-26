@@ -19,3 +19,4 @@ export { default as MpesaNode } from './integrations/MpesaNode';
 export { default as KraEtrNode } from './integrations/KraEtrNode';
 export { default as WhatsAppNode } from './integrations/WhatsAppNode';
 export { default as EmailNode } from './integrations/EmailNode';
+export { default as AfricastalkingNode } from './integrations/AfricastalkingNode';
